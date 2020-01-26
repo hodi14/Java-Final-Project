@@ -7,6 +7,7 @@ public class Board {
 
     Board() {
         board.setSize(1000, 1000);
+        board.getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     void show() {
