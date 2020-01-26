@@ -86,7 +86,6 @@ public class NewGame extends Board{
 
         map.addActionListener(this::map);
         back.addActionListener(this::back);
-        map.addActionListener(this::map);
     }
 
     public void back(ActionEvent e) {

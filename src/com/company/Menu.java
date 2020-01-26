@@ -58,6 +58,8 @@ public class Menu extends Board {
         super.board.setVisible(false);
     }
     public void settings(ActionEvent e) {
+        new Settings().show();
+        super.board.setVisible(false);
 
     }
     public void exit(ActionEvent e) {
