@@ -8,7 +8,7 @@ public class Settings extends Board {
     JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
     JLabel logo_l3 = new JLabel("███████████████████].");
     JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-    JLabel logo_l5 = new JLabel("TANKS GAME");
+    JLabel logo_l5 = new JLabel(" TANKS GAME");
 
     JButton back = new JButton("GO BACK");
 

@@ -8,7 +8,7 @@ public class NewGame extends Board{
     JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
     JLabel logo_l3 = new JLabel("███████████████████].");
     JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-    JLabel logo_l5 = new JLabel("TANKS GAME");
+    JLabel logo_l5 = new JLabel(" TANKS GAME");
 
     JButton map = new JButton("CHOOSE MAP");
     JButton back = new JButton("GO BACK");
@@ -22,8 +22,6 @@ public class NewGame extends Board{
 
     JComboBox p1_color_c = new JComboBox(tank_color.values());
     JComboBox p2_color_c = new JComboBox(tank_color.values());
-
-    Data D = new Data();
 
     enum tank_color {
         Blue, Green, Red;
@@ -93,10 +91,10 @@ public class NewGame extends Board{
         super.board.setVisible(false);
     }
     public void map(ActionEvent e) {
-        D.set_name_1(p1_name_t.getText());
-        D.set_name_2(p2_name_t.getText());
-        D.set_color_1((tank_color)p1_color_c.getSelectedItem());
-        D.set_color_2((tank_color)p2_color_c.getSelectedItem());
+        super.D.set_name_1(p1_name_t.getText());
+        super.D.set_name_2(p2_name_t.getText());
+        super.D.set_color_1((tank_color)p1_color_c.getSelectedItem());
+        super.D.set_color_2((tank_color)p2_color_c.getSelectedItem());
         new Map().show();
         super.board.setVisible(false);
     }

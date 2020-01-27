@@ -8,11 +8,11 @@ public class Menu extends Board {
     JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
     JLabel logo_l3 = new JLabel("███████████████████].");
     JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-    JLabel logo_l5 = new JLabel("TANKS GAME");
+    JLabel logo_l5 = new JLabel(" TANKS GAME");
 
     JButton exit = new JButton("EXIT");
     JButton settings = new JButton("SETTINGS");
-    JButton newgame = new JButton("START NEW GAME");
+    JButton newgame = new JButton("NEW GAME");
 
     Menu() {
         logo_l1.setBounds(200, 10, 800, 200);
