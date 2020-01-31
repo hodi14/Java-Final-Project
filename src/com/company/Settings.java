@@ -15,9 +15,9 @@ public class Settings extends Board {
     JButton bullet_pb = new JButton("BULLET POWER");
     JButton bullet_nb = new JButton("BUULET NUMBER");
 
-    JTextField bullet_pt = new JTextField();
-    JTextField life_t = new JTextField();
-    JTextField bullet_nt = new JTextField();
+    JTextField bullet_pt = new JTextField("5");
+    JTextField life_t = new JTextField("100");
+    JTextField bullet_nt = new JTextField("20");
 
     Graphics graphics = super.board.getGraphics();
 
@@ -70,13 +70,22 @@ public class Settings extends Board {
     }
 
     public void back(ActionEvent e) {
-        int l = Integer.parseInt(life_t.getText());
-        int bn = Integer.parseInt(bullet_nt.getText());
-        int bp = Integer.parseInt(bullet_pt.getText());
-        super.D.set_life(l);
-        super.D.set_bullet_p(bp);
-        super.D.set_bullet_n(bn);
-        new Menu().show();
-        super.board.setVisible(false);
+        try {
+             int l = Integer.parseInt(life_t.getText());
+             int bn = Integer.parseInt(bullet_nt.getText());
+             int bp = Integer.parseInt(bullet_pt.getText());
+            super.D.set_life(l);
+            super.D.set_bullet_p(bp);
+            super.D.set_bullet_n(bn);
+            new Menu().show();
+            super.board.setVisible(false);
+        }
+        catch (Exception e1){
+               life_t.setText("*");
+               bullet_nt.setText("*");
+               bullet_pt.setText("*");
+
+        }
+
     }
 }
