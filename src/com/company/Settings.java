@@ -11,6 +11,15 @@ public class Settings extends Board {
     JLabel logo_l5 = new JLabel(" TANKS GAME");
 
     JButton back = new JButton("GO BACK");
+    JButton life_b = new JButton("STARTING LIFE");
+    JButton bullet_pb = new JButton("BULLET POWER");
+    JButton bullet_nb = new JButton("BUULET NUMBER");
+
+    JTextField bullet_pt = new JTextField();
+    JTextField life_t = new JTextField();
+    JTextField bullet_nt = new JTextField();
+
+    Graphics graphics = super.board.getGraphics();
 
     Settings() {
         logo_l1.setBounds(200, 10, 800, 200);
@@ -34,16 +43,39 @@ public class Settings extends Board {
         super.board.add(logo_l4);
         super.board.add(logo_l5);
 
+        life_b.setBounds(300, 450, 200, 50);
+        bullet_pb.setBounds(300, 550, 200, 50);
+        bullet_nb.setBounds(300, 650, 200, 50);
         back.setBounds(400, 750, 200, 50);
 
         back.setBackground(Color.GRAY);
+        life_b.setBackground(Color.GRAY);
+        bullet_pb.setBackground(Color.GRAY);
+        bullet_nb.setBackground(Color.GRAY);
 
         super.board.add(back);
+        super.board.add(life_b);
+        super.board.add(bullet_nb);
+        super.board.add(bullet_pb);
+
+        life_t.setBounds(500, 450, 200, 50);
+        bullet_pt.setBounds(500, 550, 200, 50);
+        bullet_nt.setBounds(500, 650, 200, 50);
+
+        super.board.add(life_t);
+        super.board.add(bullet_pt);
+        super.board.add(bullet_nt);
 
         back.addActionListener(this::back);
     }
 
     public void back(ActionEvent e) {
+        int l = Integer.parseInt(life_t.getText());
+        int bn = Integer.parseInt(bullet_nt.getText());
+        int bp = Integer.parseInt(bullet_pt.getText());
+        super.D.set_life(l);
+        super.D.set_bullet_p(bp);
+        super.D.set_bullet_n(bn);
         new Menu().show();
         super.board.setVisible(false);
     }

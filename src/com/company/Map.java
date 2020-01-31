@@ -36,7 +36,7 @@ public class Map extends Board {
         Character mc = (map_number.getSelectedItem().toString()).charAt(4);
         int mi = Character.getNumericValue(mc);
         super.D.set_map(mi);
-        new GamePlay().show();
+        new GamePlay();
         super.board.setVisible(false);
     }
     public void back(ActionEvent e) {
