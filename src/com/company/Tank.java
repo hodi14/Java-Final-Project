@@ -5,11 +5,21 @@ import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Tank extends JPanel {
-    Graphics graphics;
+public class Tank extends Frame {
+    int x;
+    int y;
+    Color c;
     Rectangle t;
-    Tank() {
-        t.setSize(100, 50);
-        t.setRect(100, 100, 100, 100);
+
+    Tank(int x, int y, Color c) {
+        this.x = x;
+        this.y = y;
+        this.c = c;
+    }
+
+    public void paint_1 (Graphics g) {
+        g.setColor(c);
+        g.fillRect(x, y, 100, 50);
+        new key();
     }
 }
