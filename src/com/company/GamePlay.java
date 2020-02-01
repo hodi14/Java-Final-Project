@@ -6,14 +6,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GamePlay extends JFrame {
-    Rectangle p1;
-    int x1 = 100, y1 = 200;
+    JFrame gameplay = new JFrame();
     public GamePlay() {
-        setSize(new Dimension(1000, 1000));
-        this.setBackground(Color.BLACK);
-        this.setVisible(true);
-        setLocationRelativeTo(null);
-        setLayout(null);
+        gameplay.setSize(1000, 1000);
+        gameplay.setBackground(Color.BLACK);
+        gameplay.setLocationRelativeTo(null);
+        gameplay.setLayout(null);
+        gameplay.setVisible(true);
+        gameplay.setResizable(false);
     }
-
 }
