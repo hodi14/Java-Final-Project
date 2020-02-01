@@ -5,11 +5,10 @@ import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Tank extends Frame {
+public class Tank extends Frame{
     int x;
     int y;
     Color c;
-    Rectangle t;
 
     Tank(int x, int y, Color c) {
         this.x = x;
@@ -20,6 +19,7 @@ public class Tank extends Frame {
     public void paint_1 (Graphics g) {
         g.setColor(c);
         g.fillRect(x, y, 100, 50);
-        new key();
+        super.paint(g);
+        Toolkit.getDefaultToolkit().sync();
     }
 }
