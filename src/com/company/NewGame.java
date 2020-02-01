@@ -93,11 +93,12 @@ public class NewGame extends Board{
     public void map(ActionEvent e) {
         super.D.set_name_1(p1_name_t.getText());
         super.D.set_name_2(p2_name_t.getText());
-     //   if ( (tank_color)p1_color_c.getSelectedItem() == (tank_color)p1_color_c.getSelectedItem()) {
-       // }
-        super.D.set_color_1((tank_color)p1_color_c.getSelectedItem());
-        super.D.set_color_2((tank_color)p2_color_c.getSelectedItem());
-        new Map().show();
-        super.board.setVisible(false);
+        int c1 = p1_color_c.getSelectedIndex(), c2 = p2_color_c.getSelectedIndex();
+        if (c1 != c2) {
+            super.D.set_color_1((tank_color)p1_color_c.getSelectedItem());
+            super.D.set_color_2((tank_color)p2_color_c.getSelectedItem());
+            new Map().show();
+            super.board.setVisible(false);
+        }
     }
 }
