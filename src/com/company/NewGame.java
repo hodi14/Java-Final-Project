@@ -20,12 +20,8 @@ public class NewGame extends Board{
     JTextField p1_name_t = new JTextField();
     JTextField p2_name_t = new JTextField();
 
-    JComboBox p1_color_c = new JComboBox(tank_color.values());
-    JComboBox p2_color_c = new JComboBox(tank_color.values());
-
-    enum tank_color {
-        Blue, Green, Red;
-    }
+    JComboBox p1_color_c = new JComboBox(Data.tank_color.values());
+    JComboBox p2_color_c = new JComboBox(Data.tank_color.values());
 
     NewGame() {
         logo_l1.setBounds(200, 10, 800, 200);
@@ -95,8 +91,8 @@ public class NewGame extends Board{
         super.D.set_name_2(p2_name_t.getText());
         int c1 = p1_color_c.getSelectedIndex(), c2 = p2_color_c.getSelectedIndex();
         if (c1 != c2) {
-            super.D.set_color_1((tank_color)p1_color_c.getSelectedItem());
-            super.D.set_color_2((tank_color)p2_color_c.getSelectedItem());
+            super.D.set_color_1((Data.tank_color)p1_color_c.getSelectedItem());
+            super.D.set_color_2((Data.tank_color)p2_color_c.getSelectedItem());
             new Map().show();
             super.board.setVisible(false);
         }

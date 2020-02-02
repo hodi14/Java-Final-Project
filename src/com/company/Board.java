@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Board extends JFrame{
     JFrame board = new JFrame("TANKS");
-    public Data D = new Data();
+    public Data D = Data.getInstance();
 
     Board() {
         board.setSize(1000, 1000);

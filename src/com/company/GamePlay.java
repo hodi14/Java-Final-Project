@@ -12,20 +12,41 @@ public class GamePlay extends JFrame implements KeyListener {
     Tank_arrow t2 = new Tank_arrow(750, 750);
 
     GamePlay() {
-        t1.c = Color.RED;
-        t2.c = Color.BLUE;
+        switch (Data.getInstance().p1_color.toString()) {
+            case "Blue":
+                t1.c = Color.BLUE;
+                break;
+            case "Red":
+                t1.c = Color.RED;
+                break;
+            case "Green":
+                t1.c = Color.GREEN;
+                break;
+        }
+        switch (Data.getInstance().p2_color.toString()) {
+            case "Blue":
+                t2.c = Color.BLUE;
+                break;
+            case "Red":
+                t2.c = Color.RED;
+                break;
+            case "Green":
+                t2.c = Color.GREEN;
+                break;
+        }
+
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
         this.setVisible(true);
         this.setResizable(false);
         this.getContentPane().setBackground(Color.BLACK);
+        update_pos();
 
         new Timer(
                 10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
-                        update_pos();
                         repaint();
                     }
                 }
@@ -35,10 +56,10 @@ public class GamePlay extends JFrame implements KeyListener {
         super.paint(g);
 
         g.setColor(t1.c);
-        g.fillRect((int)t1.x, (int)t1.y, 70, 70);
+        g.fillOval((int)t1.x, (int)t1.y, 80, 80);
 
         g.setColor(t2.c);
-        g.fillRect((int)t2.x, (int)t2.y, 70, 70);
+        g.fillOval((int)t2.x, (int)t2.y, 80, 80);
 
         Toolkit.getDefaultToolkit().sync();
     }
