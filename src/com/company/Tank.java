@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Tank extends JFrame{
-    double x, y, v = 5;
+    double x, y;
     Color c;
 
     Tank(int x, int y) {

@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Bullet extends JFrame{
-    double x, y, v = 5;
+    double x, y;
     Color c;
 
     Bullet(int x, int y) {
