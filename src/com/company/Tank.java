@@ -5,9 +5,10 @@ import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Tank extends Frame{
-    int x;
-    int y;
+import static com.company.GamePlay.*;
+
+public class Tank implements KeyListener{
+    int x, y;
     Color c;
 
     Tank(int x, int y, Color c) {
@@ -16,10 +17,17 @@ public class Tank extends Frame{
         this.c = c;
     }
 
-    public void paint_1 (Graphics g) {
-        g.setColor(c);
-        g.fillRect(x, y, 100, 50);
-        super.paint(g);
-        Toolkit.getDefaultToolkit().sync();
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyChar() == 'W' || e.getKeyChar() == 'w')
+            this.y -= 0.04;
+        if (e.getKeyChar() == 'S' || e.getKeyChar() == 's')
+            this.y += 0.04;
+        if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A')
+            this.x -= 0.04;
+        if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D')
+            this.x += 0.04;
+
     }
 }

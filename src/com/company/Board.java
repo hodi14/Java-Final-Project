@@ -2,7 +2,7 @@ package com.company;
 import java.awt.*;
 import javax.swing.*;
 
-public class Board {
+public class Board extends JFrame{
     JFrame board = new JFrame("TANKS");
     Data D = new Data();
 
@@ -12,7 +12,7 @@ public class Board {
         board.setResizable(false);
     }
 
-    void show() {
+    public void show() {
         board.setLocationRelativeTo(null);
         board.setLayout(null);
         board.setVisible(true);

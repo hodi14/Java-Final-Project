@@ -7,57 +7,86 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.TimerTask;
 
-public class GamePlay {
+public class GamePlay extends JFrame implements KeyListener {
+    Tank t1 = new Tank(250, 250, Color.BLUE);
+
     GamePlay() {
-        GamePlay_ ground = new GamePlay_();
-        ground.setVisible(true);
+        this.setSize(1000, 1000);
+        this.setLocationRelativeTo(null);
+        this.setLayout(null);
+        this.setVisible(true);
+        this.setResizable(false);
+        this.getContentPane().setBackground(Color.BLACK);
 
         new Timer(
-                50,
+                10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
-                        ground.updateState();
-                        ground.repaint();
-                        ground.getContentPane().setBackground(Color.BLACK);
+                        update_pos();
+                        repaint();;
                     }
                 }
         ).start();
     }
-}
-
-class GamePlay_ extends JFrame implements KeyListener {
-    float shapeX = 250, shapeY = 0;
-    boolean right = true, down = true;
-    GamePlay_() {
-        this.setSize(1000, 1000);
+    public void paint(Graphics g) {
+        g.setColor(t1.c);
+        super.paint(g);
+        g.fillRect(t1.x, t1.y, 100, 50);
+        Toolkit.getDefaultToolkit().sync();
     }
 
-    void updateState() {
-        if (this.shapeX > 1000 || this.shapeX < 0)
-            this.right = !this.right;
-        if (this.shapeY > 1000 || this.shapeY < 0)
-            this.down = !this.down;
+    public void update_pos() {
+        this.addKeyListener(t1);
+    }
+
+    public void keyTyped(KeyEvent keyEvent) {}
+    public void keyPressed(KeyEvent keyEvent) {}
+    public void keyReleased(KeyEvent keyEvent) {}
+}
+ /*
+class Ground extends JFrame implements KeyListener {
+    double x_pos_1 = 250, y_pos_1 = 250;
+    double x_pos_2 = 750, y_pos_2 = 750;
+
+    Ground() {
+    }
+
+    void update_pos() {
         this.addKeyListener(this);
     }
 
     public void paint(Graphics g) {
         g.setColor(Color.RED);
         super.paint(g);
-        g.fillRect((int)shapeX, (int)shapeY, 100, 50);
+        g.fillRect((int)x_pos_1, (int)y_pos_1, 75, 75);
+        g.setColor(Color.GREEN);
+        g.fillRect((int)x_pos_2, (int)y_pos_2, 75, 75);
+
         Toolkit.getDefaultToolkit().sync();
     }
-    public void keyReleased(KeyEvent e) {}
-    public void keyTyped(KeyEvent e) {}
-    public void keyPressed(KeyEvent e) {
+
+    public void keyReleased(KeyEvent e) {
         if (e.getKeyChar() == 'W' || e.getKeyChar() == 'w')
-            this.shapeY -= 0.1;
+            y_pos_1 -= 0.03;
         if (e.getKeyChar() == 'S' || e.getKeyChar() == 's')
-            this.shapeY += 0.1;
-
+            y_pos_1 += 0.03;
         if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A')
-            this.shapeX -= 0.1;
+            x_pos_1 -= 0.03;
         if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D')
-            this.shapeX += 0.1;
+            x_pos_1 += 0.03;
 
+        if (e.getKeyCode() == KeyEvent.VK_UP)
+            y_pos_2 -= 0.03;
+        if (e.getKeyCode() == KeyEvent.VK_DOWN)
+            y_pos_2 += 0.03;
+        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+            x_pos_2 -= 0.03;
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+            x_pos_2 += 0.03;
     }
+    public void keyTyped(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {}
+
 }
+
+  */
