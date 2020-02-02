@@ -19,18 +19,6 @@ public class Tank_wasd implements KeyListener{
     public void keyReleased(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
     public void keyTyped(KeyEvent e) {
-        if ((e.getKeyChar() == 'W' || e.getKeyChar() == 'w') && this.y > 30) {
-            this.y -= v;
-        }
-        if ((e.getKeyChar() == 'S' || e.getKeyChar() == 's') && this.y < 930) {
-            this.y += v;
-        }
-        if ((e.getKeyChar() == 'a' || e.getKeyChar() == 'A') && this.x > 0) {
-            this.x -= v;
-        }
-        if ((e.getKeyChar() == 'd' || e.getKeyChar() == 'D') && this.x < 930) {
-            this.x += v;
-        }
 
     }
 }
