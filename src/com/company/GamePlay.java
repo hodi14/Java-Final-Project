@@ -1,16 +1,15 @@
 package com.company;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.TimerTask;
 
-public class GamePlay {
+public class GamePlay extends JFrame {
     Tank t1 = new Tank(250, 250);
     Tank t2 = new Tank(750, 750);
-    JFrame ground = new JFrame();
 
     GamePlay() {
         switch (Data.getInstance().p1_color.toString()) {
@@ -36,22 +35,22 @@ public class GamePlay {
                 break;
         }
 
-        ground.setSize(1000, 1000);
-        ground.setLocationRelativeTo(null);
-        ground.setLayout(null);
-        ground.setVisible(true);
-        ground.setResizable(false);
-        ground.getContentPane().setBackground(Color.BLACK);
+        this.addKeyListener(move_tank);
 
-        ground.addKeyListener(move_tank);
+        this.setSize(1000, 1000);
+        this.setLocationRelativeTo(null);
+        this.setLayout(null);
+        this.setVisible(true);
+        this.setResizable(false);
+        this.getContentPane().setBackground(Color.BLACK);
 
         new Timer(
                 10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
-                        t1.paint(ground.getGraphics());
-                        t2.paint(ground.getGraphics());
-                        ground.repaint();
+                        repaint();
+                        t1.paint(getGraphics());
+                        t2.paint(getGraphics());
                     }
                 }
         ).start();
