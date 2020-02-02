@@ -8,11 +8,12 @@ import java.awt.event.KeyListener;
 import java.util.TimerTask;
 
 public class GamePlay extends JFrame implements KeyListener {
-    Tank_wasd t1 = new Tank_wasd(250, 250, Color.BLUE);
-    Tank_arrow t2 = new Tank_arrow(750, 750, Color.RED);
-
+    Tank_wasd t1 = new Tank_wasd(250, 250);
+    Tank_arrow t2 = new Tank_arrow(750, 750);
 
     GamePlay() {
+        t1.c = Color.RED;
+        t2.c = Color.BLUE;
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
@@ -32,6 +33,7 @@ public class GamePlay extends JFrame implements KeyListener {
     }
     public void paint(Graphics g) {
         super.paint(g);
+
         g.setColor(t1.c);
         g.fillRect((int)t1.x, (int)t1.y, 70, 70);
 
