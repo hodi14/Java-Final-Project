@@ -16,6 +16,7 @@ public class Tank extends JFrame{
         super.paint(g);
         g.setColor(c);
         g.fillOval((int)this.x, (int)this.y, 80, 80);
+        g.fillRect((int)this.x-32, (int)this.y+35, 30, 10);
         Toolkit.getDefaultToolkit().sync();
     }
 }

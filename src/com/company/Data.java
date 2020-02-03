@@ -16,7 +16,7 @@ public class Data {
 
     private String p1_name, p2_name;
     private int bullet_n = 20, p1_life = 100, p2_life = 100, map_number, bullet_p = 5;
-    tank_color p1_color, p2_color;
+    private tank_color p1_color, p2_color;
     private int p1_bullet_n =bullet_n,p2_bullet_n =bullet_n,p1_bullet_p =bullet_n;
 
     void set_name_1(String n1) {
@@ -26,14 +26,8 @@ public class Data {
         p2_name = n2;
     }
 
-    void set_color_1(tank_color c1) {
-        p1_color = c1;
-        System.out.println(c1);
-    }
-    void set_color_2(tank_color c2) {
-        p2_color = c2;
-        System.out.println(c2);
-    }
+    void set_color_1(tank_color c1) { p1_color = c1; }
+    void set_color_2(tank_color c2) { p2_color = c2; }
 
     void set_map(int m) {
         map_number = m;
@@ -49,5 +43,17 @@ public class Data {
     void set_bullet_n(int bn) {
         bullet_n = bn;
     }
+
+    String get_name_1() { return this.p1_name; }
+    String get_name_2() { return this.p1_name; }
+
+    tank_color get_color_1() { return this.p1_color; }
+    tank_color get_color_2() { return this.p2_color; }
+
+    int get_map_number() { return this.map_number; }
+
+    int get_life_1() { return this.p1_life; }
+    int get_life_2() { return this.p2_life; }
+
 
 }

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class GamePlay extends JFrame {
     Tank t1 = new Tank(250, 250);
-    Tank t2 = new Tank(750, 750);
+    Tank t2 = new Tank(900, 900);
     ArrayList<Bullet> bullets = new ArrayList<>();
 
     GamePlay() {
-        switch (Data.getInstance().p1_color.toString()) {
+        switch (Data.getInstance().get_color_1().toString()) {
             case "Blue":
                 t1.c = Color.BLUE;
                 break;
@@ -25,7 +25,7 @@ public class GamePlay extends JFrame {
                 t1.c = Color.GREEN;
                 break;
         }
-        switch (Data.getInstance().p2_color.toString()) {
+        switch (Data.getInstance().get_color_2().toString()) {
             case "Blue":
                 t2.c = Color.BLUE;
                 break;
@@ -37,7 +37,7 @@ public class GamePlay extends JFrame {
                 break;
         }
 
-        this.addKeyListener(move_tank);
+        this.addKeyListener(move);
 
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
@@ -50,17 +50,38 @@ public class GamePlay extends JFrame {
                 10,
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
+                        repaint();
                         t1.paint(getGraphics());
                         t2.paint(getGraphics());
                         for (Bullet b: bullets) {
+                            b.x += 3;
                             b.paint(getGraphics());
                         }
-                        repaint();
+                        switch (Data.getInstance().get_map_number()) {
+                            case 1:
+                                Ground.getInstance().paint1(getGraphics());
+                                break;
+                            case 2:
+                                Ground.getInstance().paint2(getGraphics());
+                                break;
+                            case 3:
+                                Ground.getInstance().paint3(getGraphics());
+                                break;
+                            case 4:
+                                Ground.getInstance().paint4(getGraphics());
+                                break;
+                            case 5:
+                                Ground.getInstance().paint5(getGraphics());
+                                break;
+                            case 6:
+                                Ground.getInstance().paint6(getGraphics());
+                                break;
+                        }
                     }
                 }
         ).start();
     }
-    KeyListener move_tank = new KeyListener() {
+    KeyListener move = new KeyListener() {
         public void keyPressed(KeyEvent e) {
             //ARROW
             if (e.getKeyCode() == KeyEvent.VK_UP && t2.y > 30) {
@@ -94,7 +115,6 @@ public class GamePlay extends JFrame {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 Bullet b = new Bullet((int)t2.x, (int)t2.y);
                 b.c = t2.c;
-                b.y++;
                 bullets.add(b);
             }
 
@@ -102,7 +122,6 @@ public class GamePlay extends JFrame {
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 Bullet b = new Bullet((int)t1.x, (int)t1.y);
                 b.c = t1.c;
-                b.x++;
                 bullets.add(b);
             }
 
