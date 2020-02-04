@@ -93,7 +93,7 @@ public class GamePlay extends JFrame {
     KeyListener move_pl = new KeyListener() {
         public void keyPressed(KeyEvent e) {
             pressed_pl.add(e.getKeyChar());
-            if (pressed_pl.size() >= 1) {
+            if (pressed_pl.size() >= 0) {
                 for (Character c: pressed_pl) {
                     if (c == 'P' || c == 'p') {
                         t2.move();
@@ -121,7 +121,7 @@ public class GamePlay extends JFrame {
     KeyListener move_wasd = new KeyListener() {
         public void keyPressed(KeyEvent e) {
             pressed_wasd.add(e.getKeyChar());
-            if (pressed_wasd.size() >= 1) {
+            if (pressed_wasd.size() >= 0) {
                 for (Character c : pressed_wasd){
                     if (c == 'W' || c == 'w') {
                         t1.move();
