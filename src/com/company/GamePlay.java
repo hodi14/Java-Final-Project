@@ -56,10 +56,14 @@ class GamePlay extends JFrame {
                     right_1 = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    Bullet b = new Bullet((int) t1.x, (int) t1.y, t1.direction);
-                    b.c = t1.c;
-                    bullets.add(b);
+                    if (Data.getInstance().get_p1_bullet_n() > 0) {
+                        Bullet b = new Bullet((int) t1.x, (int) t1.y, t1.direction);
+                        b.c = t1.c;
+                        bullets.add(b);
+                        Data.getInstance().p1_shot();
+                    }
                 }
+                e.consume();
             }
             public void keyTyped(KeyEvent e) {}
             public void keyReleased(KeyEvent e) {
@@ -73,6 +77,7 @@ class GamePlay extends JFrame {
                 if (c == 'd' || c == 'D') {
                     right_1 = false;
                 }
+                e.consume();
             }
         };
         this.addKeyListener(move_wasd);
@@ -89,10 +94,14 @@ class GamePlay extends JFrame {
                     right_2 = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    Bullet b = new Bullet((int) t2.x, (int) t2.y, t2.direction);
-                    b.c = t2.c;
-                    bullets.add(b);
+                    if (Data.getInstance().get_p2_bullet_n() > 0) {
+                        Bullet b = new Bullet((int) t2.x, (int) t2.y, t2.direction);
+                        b.c = t2.c;
+                        bullets.add(b);
+                        Data.getInstance().p2_shot();
+                    }
                 }
+                e.consume();
             }
             public void keyTyped(KeyEvent e) {}
             public void keyReleased(KeyEvent e) {
@@ -105,6 +114,7 @@ class GamePlay extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     right_2 = false;
                 }
+                e.consume();
             }
         };
         this.addKeyListener(move_pl);
@@ -118,7 +128,7 @@ class GamePlay extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         new Timer(
-                5,
+                10,
                 actionEvent -> {
                     switch (Data.getInstance().get_map_number()) {
                         /*

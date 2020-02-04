@@ -37,7 +37,7 @@ public class Tank extends JFrame{
     void turn_right() { this.change_direction(-av); }
 
     void move() {
-        this.x += Math.round(1 * Math.sin(this.direction));
-        this.y += Math.round(1 * Math.cos(this.direction));
+        this.x += Math.round(2 * Math.sin(this.direction));
+        this.y += Math.round(2 * Math.cos(this.direction));
     }
 }
