@@ -14,11 +14,13 @@ public class Ground extends JFrame{
     }
     private Ground(){}
 
-    public void paint1(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(100,100, 40, 100);
-        Toolkit.getDefaultToolkit().sync();
+    public void map1(Graphics g) {
+        Data.getInstance().walls_1.add(new wall(100,100, 70, 200));
+        Data.getInstance().walls_1.add(new wall(234,500,100,30));
+        Data.getInstance().walls_1.add(new wall(539, 700,50,150));
+        Data.getInstance().walls_1.add(new wall(480,100,250,70));
+        Data.getInstance().walls_1.add(new wall(850,350,2000,100));
+        Data.getInstance().walls_1.add(new wall(70,700,100,100));
     }
 
     public void paint2(Graphics g) {

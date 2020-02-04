@@ -57,31 +57,34 @@ public class GamePlay extends JFrame {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
                         repaint();
+                        switch (Data.getInstance().get_map_number()) {
+                            case 1:
+                                Ground.getInstance().map1(getGraphics());
+                                for (wall w: Data.getInstance().walls_1) {
+                                    w.paint(getGraphics());
+                                }
+                                break;
+                            case 2:
+                               // Ground.getInstance().map2(getGraphics());
+                                break;
+                            case 3:
+                                //Ground.getInstance().3(getGraphics());
+                                break;
+                            case 4:
+                                //Ground.getInstance().paint4(getGraphics());
+                                break;
+                            case 5:
+                                //Ground.getInstance().paint5(getGraphics());
+                                break;
+                            case 6:
+                                //Ground.getInstance().paint6(getGraphics());
+                                break;
+                        }
                         t1.paint(getGraphics());
                         t2.paint(getGraphics());
                         for (Bullet b: bullets) {
                             b.move();
                             b.paint(getGraphics());
-                        }
-                        switch (Data.getInstance().get_map_number()) {
-                            case 1:
-                                Ground.getInstance().paint1(getGraphics());
-                                break;
-                            case 2:
-                                Ground.getInstance().paint2(getGraphics());
-                                break;
-                            case 3:
-                                Ground.getInstance().paint3(getGraphics());
-                                break;
-                            case 4:
-                                Ground.getInstance().paint4(getGraphics());
-                                break;
-                            case 5:
-                                Ground.getInstance().paint5(getGraphics());
-                                break;
-                            case 6:
-                                Ground.getInstance().paint6(getGraphics());
-                                break;
                         }
                     }
                 }
