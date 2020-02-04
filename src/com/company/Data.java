@@ -2,9 +2,9 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Data {
+class Data {
     private static Data me;
-    public static Data getInstance() {
+    static Data getInstance() {
         if (me == null) {
             me = new Data();
         }

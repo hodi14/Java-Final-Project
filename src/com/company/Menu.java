@@ -4,18 +4,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
-public class Menu extends Board {
-    JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
-    JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
-    JLabel logo_l3 = new JLabel("███████████████████].");
-    JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-    JLabel logo_l5 = new JLabel(" TANKS GAME");
-
-    JButton exit = new JButton("EXIT");
-    JButton settings = new JButton("SETTINGS");
-    JButton newgame = new JButton("NEW GAME");
-
+class Menu extends Board {
     Menu() {
+        JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
+        JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
+        JLabel logo_l3 = new JLabel("███████████████████].");
+        JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
+        JLabel logo_l5 = new JLabel(" TANKS GAME");
+
+        JButton exit = new JButton("EXIT");
+        JButton settings = new JButton("SETTINGS");
+        JButton newgame = new JButton("NEW GAME");
+
         logo_l1.setBounds(200, 10, 800, 200);
         logo_l1.setFont(new Font(logo_l1.getFont().getName(), logo_l1.getFont().getStyle(), 40));
         logo_l2.setBounds(200, 60, 800, 200);
@@ -54,16 +54,16 @@ public class Menu extends Board {
         exit.addActionListener(this::exit);
     }
 
-    public void newgame(ActionEvent e) {
+    private void newgame(ActionEvent e) {
         new NewGame().show();
         super.board.setVisible(false);
     }
-    public void settings(ActionEvent e) {
+    private void settings(ActionEvent e) {
         new Settings().show();
         super.board.setVisible(false);
 
     }
-    public void exit(ActionEvent e) {
+    private void exit(ActionEvent e) {
         super.board.dispose();
     }
 }

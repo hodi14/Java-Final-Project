@@ -14,8 +14,8 @@ public class Tank extends JFrame{
 
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        super.paint(g2d);
         g2d.setColor(c);
+        super.paint(g2d);
         g2d.setStroke(new BasicStroke(10));
 
         x_gun = Math.round(this.x + 40 * Math.sin(this.direction));
@@ -27,16 +27,14 @@ public class Tank extends JFrame{
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void change_direction(double amount) {
+    private void change_direction(double amount) {
         this.direction = (this.direction + amount) % (2*Math.PI);
     }
 
-    public void turn_left() {
+    void turn_left() {
         this.change_direction(av);
     }
-    public void turn_right() {
-        this.change_direction(-av);
-    }
+    void turn_right() { this.change_direction(-av); }
 
     void move() {
         this.x += Math.round(5 * Math.sin(this.direction));

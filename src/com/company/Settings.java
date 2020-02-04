@@ -4,25 +4,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
-public class Settings extends Board {
-    JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
-    JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
-    JLabel logo_l3 = new JLabel("███████████████████].");
-    JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-    JLabel logo_l5 = new JLabel(" TANKS GAME");
-
-    JButton back = new JButton("GO BACK");
-    JButton life_b = new JButton("STARTING LIFE");
-    JButton bullet_pb = new JButton("BULLET POWER");
-    JButton bullet_nb = new JButton("BUULET NUMBER");
-
-    JTextField bullet_pt = new JTextField("5");
-    JTextField life_t = new JTextField("100");
-    JTextField bullet_nt = new JTextField("20");
-
-    Graphics graphics = super.board.getGraphics();
+class Settings extends Board {
+    private JTextField bullet_pt = new JTextField("5");
+    private JTextField life_t = new JTextField("100");
+    private JTextField bullet_nt = new JTextField("20");
 
     Settings() {
+        JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
+        JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
+        JLabel logo_l3 = new JLabel("███████████████████].");
+        JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
+        JLabel logo_l5 = new JLabel(" TANKS GAME");
+
+        JButton back = new JButton("GO BACK");
+        JButton life_b = new JButton("STARTING LIFE");
+        JButton bullet_pb = new JButton("BULLET POWER");
+        JButton bullet_nb = new JButton("BUULET NUMBER");
+
         logo_l1.setBounds(200, 10, 800, 200);
         logo_l1.setFont(new Font(logo_l1.getFont().getName(), logo_l1.getFont().getStyle(), 40));
         logo_l2.setBounds(200, 60, 800, 200);
@@ -70,7 +68,7 @@ public class Settings extends Board {
         back.addActionListener(this::back);
     }
 
-    public void back(ActionEvent e) {
+    private void back(ActionEvent e) {
         try {
              int l = Integer.parseInt(life_t.getText());
              int bn = Integer.parseInt(bullet_nt.getText());

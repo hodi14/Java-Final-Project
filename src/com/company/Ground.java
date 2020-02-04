@@ -3,10 +3,10 @@ package com.company;
 import java.awt.*;
 import javax.swing.*;
 
-public class Ground extends JFrame{
+class Ground extends JFrame{
 
     private static Ground me;
-    public static Ground getInstance() {
+    static Ground getInstance() {
         if (me == null) {
             me = new Ground();
         }
@@ -14,7 +14,7 @@ public class Ground extends JFrame{
     }
     private Ground(){}
 
-    public void map1(Graphics g) {
+    public void map_1(Graphics g) {
         Data.getInstance().walls_1.add(new wall (125,0,5,300));
         Data.getInstance().walls_1.add(new wall(125,150, 150, 5));
         Data.getInstance().walls_1.add(new wall(234,500,100,30));
@@ -26,38 +26,23 @@ public class Ground extends JFrame{
          */
     }
 
-    public void paint2(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(200,200, 40, 100);
-        Toolkit.getDefaultToolkit().sync();
+    public void map_2(Graphics g) {
+
     }
 
-    public void paint3(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(300,300, 40, 100);
-        Toolkit.getDefaultToolkit().sync();
+    public void map_3(Graphics g) {
+
     }
 
-    public void paint4(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(400,400, 40, 100);
-        Toolkit.getDefaultToolkit().sync();
+    public void map_4(Graphics g) {
+
     }
 
-    public void paint5(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(500,500, 40, 100);
-        Toolkit.getDefaultToolkit().sync();
+    public void map_5(Graphics g) {
+
     }
 
-    public void paint6(Graphics g) {
-        super.paint(g);
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(600,600, 40, 100);
-        Toolkit.getDefaultToolkit().sync();
+    public void map_6(Graphics g) {
+
     }
 }

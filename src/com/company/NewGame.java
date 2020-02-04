@@ -4,27 +4,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
-public class NewGame extends Board{
-    JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
-    JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
-    JLabel logo_l3 = new JLabel("███████████████████].");
-    JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-    JLabel logo_l5 = new JLabel(" TANKS GAME");
+class NewGame extends Board{
+    private JTextField p1_name_t = new JTextField();
+    private JTextField p2_name_t = new JTextField();
 
-    JButton map = new JButton("CHOOSE MAP");
-    JButton back = new JButton("GO BACK");
-    JButton p1_name_b = new JButton("PLAYER 1 NAME");
-    JButton p2_name_b = new JButton("PLAYER 2 NAME");
-    JButton p1_color_b = new JButton("PLAYER 1 COLOR");
-    JButton p2_color_b = new JButton("PLAYER 2 COLOR");
-
-    JTextField p1_name_t = new JTextField();
-    JTextField p2_name_t = new JTextField();
-
-    JComboBox p1_color_c = new JComboBox(Data.tank_color.values());
-    JComboBox p2_color_c = new JComboBox(Data.tank_color.values());
+    private JComboBox p1_color_c = new JComboBox(Data.tank_color.values());
+    private JComboBox p2_color_c = new JComboBox(Data.tank_color.values());
 
     NewGame() {
+        JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
+        JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
+        JLabel logo_l3 = new JLabel("███████████████████].");
+        JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
+        JLabel logo_l5 = new JLabel(" TANKS GAME");
+
+        JButton map = new JButton("CHOOSE MAP");
+        JButton back = new JButton("GO BACK");
+        JButton p1_name_b = new JButton("PLAYER 1 NAME");
+        JButton p2_name_b = new JButton("PLAYER 2 NAME");
+        JButton p1_color_b = new JButton("PLAYER 1 COLOR");
+        JButton p2_color_b = new JButton("PLAYER 2 COLOR");
+
         logo_l1.setBounds(200, 10, 800, 200);
         logo_l1.setFont(new Font(logo_l1.getFont().getName(), logo_l1.getFont().getStyle(), 40));
         logo_l2.setBounds(200, 60, 800, 200);
@@ -83,11 +83,11 @@ public class NewGame extends Board{
         back.addActionListener(this::back);
     }
 
-    public void back(ActionEvent e) {
+    private void back(ActionEvent e) {
         new Menu().show();
         super.board.setVisible(false);
     }
-    public void map(ActionEvent e) {
+    private void map(ActionEvent e) {
         super.D.set_name_1(p1_name_t.getText());
         super.D.set_name_2(p2_name_t.getText());
         int c1 = p1_color_c.getSelectedIndex(), c2 = p2_color_c.getSelectedIndex();

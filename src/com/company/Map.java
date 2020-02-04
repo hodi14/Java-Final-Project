@@ -2,17 +2,18 @@ package com.company;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import javax.swing.*;
 
-public class Map extends Board {
-    JButton back = new JButton("GO BACK");
-    JButton start = new JButton("START THE GAME");
-    JButton map = new JButton("MAP NUMBER");
-
-    String[] map_numbers = {"Map 1", "Map 2", "Map 3", "Map 4", "Map 5", "Map 6"};
-    JComboBox map_number = new JComboBox(map_numbers);
+class Map extends Board {
+    private String[] map_numbers = {"Map 1", "Map 2", "Map 3", "Map 4", "Map 5", "Map 6"};
+    private JComboBox map_number = new JComboBox(map_numbers);
 
     Map() {
+        JButton back = new JButton("GO BACK");
+        JButton start = new JButton("START THE GAME");
+        JButton map = new JButton("MAP NUMBER");
+
         map.setBounds(300, 550, 200, 50);
         back.setBounds(400, 750, 200, 50);
         start.setBounds(400, 650, 200, 50);
@@ -33,14 +34,14 @@ public class Map extends Board {
         back.addActionListener(this::back);
     }
 
-    public void start(ActionEvent e) {
-        Character mc = (map_number.getSelectedItem().toString()).charAt(4);
+    private void start(ActionEvent e) {
+        char mc = (Objects.requireNonNull(map_number.getSelectedItem()).toString()).charAt(4);
         int mi = Character.getNumericValue(mc);
         super.D.set_map(mi);
         new GamePlay();
         super.board.setVisible(false);
     }
-    public void back(ActionEvent e) {
+    private void back(ActionEvent e) {
         new NewGame().show();
         super.board.setVisible(false);
     }
