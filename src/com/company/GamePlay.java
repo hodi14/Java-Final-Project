@@ -17,6 +17,8 @@ class GamePlay extends JFrame {
     private final Set<Character> pressed_wasd = new HashSet<>();
     private final Set<Character> pressed_pl = new HashSet<>();
 
+    private boolean right_1, left_1, right_2, left_2, move_1, move_2;
+
     GamePlay() {
         switch (Data.getInstance().get_color_1().toString()) {
             case "Blue":
@@ -43,65 +45,66 @@ class GamePlay extends JFrame {
 
         KeyListener move_wasd = new KeyListener() {
             public void keyPressed(KeyEvent e) {
-                pressed_wasd.add(e.getKeyChar());
-                if (pressed_wasd.size() >= 1) {
-                    for (Character c : pressed_wasd) {
-                        if (c == 'W' || c == 'w') {
-                            t1.move();
-                        }
-                        if (c == 'a' || c == 'A') {
-                            t1.turn_left();
-                        }
-                        if (c == 'd' || c == 'D') {
-                            t1.turn_right();
-                        }
-
-                        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                            Bullet b = new Bullet((int) t1.x, (int) t1.y, t1.direction);
-                            b.c = t1.c;
-                            bullets.add(b);
-                        }
-                    }
+                char c = e.getKeyChar();
+                if (c == 'W' || c == 'w') {
+                    move_1 = true;
+                }
+                if (c == 'a' || c == 'A') {
+                    left_1 = true;
+                }
+                if (c == 'd' || c == 'D') {
+                    right_1 = true;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    Bullet b = new Bullet((int) t1.x, (int) t1.y, t1.direction);
+                    b.c = t1.c;
+                    bullets.add(b);
                 }
             }
-
-            public void keyTyped(KeyEvent e) {
-            }
-
+            public void keyTyped(KeyEvent e) {}
             public void keyReleased(KeyEvent e) {
-                pressed_wasd.remove(e.getKeyChar());
+                char c = e.getKeyChar();
+                if (c == 'W' || c == 'w') {
+                    move_1 = false;
+                }
+                if (c == 'a' || c == 'A') {
+                    left_1 = false;
+                }
+                if (c == 'd' || c == 'D') {
+                    right_1 = false;
+                }
             }
         };
         this.addKeyListener(move_wasd);
 
         KeyListener move_pl = new KeyListener() {
             public void keyPressed(KeyEvent e) {
-                pressed_pl.add(e.getKeyChar());
-                if (pressed_pl.size() >= 1) {
-                    for (Character c : pressed_pl) {
-                        if (c == 'P' || c == 'p') {
-                            t2.move();
-                        }
-                        if (c == 'L' || c == 'l') {
-                            t2.turn_left();
-                        }
-                        if (c == '\'') {
-                            t2.turn_right();
-                        }
-                        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                            Bullet b = new Bullet((int) t2.x, (int) t2.y, t2.direction);
-                            b.c = t2.c;
-                            bullets.add(b);
-                        }
-                    }
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    move_2 = true;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    left_2 = true;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    right_2 = true;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    Bullet b = new Bullet((int) t2.x, (int) t2.y, t2.direction);
+                    b.c = t2.c;
+                    bullets.add(b);
                 }
             }
-
-            public void keyTyped(KeyEvent e) {
-            }
-
+            public void keyTyped(KeyEvent e) {}
             public void keyReleased(KeyEvent e) {
-                pressed_pl.remove(e.getKeyChar());
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    move_2 = false;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    left_2 = false;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    right_2 = false;
+                }
             }
         };
         this.addKeyListener(move_pl);
@@ -146,6 +149,19 @@ class GamePlay extends JFrame {
 
                          */
                     }
+                    if (move_1)
+                        t1.move();
+                    if(left_1)
+                        t1.turn_left();
+                    if(right_1)
+                        t1.turn_right();
+
+                    if (move_2)
+                        t2.move();
+                    if(left_2)
+                        t2.turn_left();
+                    if(right_2)
+                        t2.turn_right();
 
                     t1.paint(getGraphics());
                     t2.paint(getGraphics());

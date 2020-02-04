@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Tank extends JFrame{
-    double x, y, direction, av = 0.05, x_gun, y_gun;
+    double x, y, direction, av = 0.02, x_gun, y_gun;
     Color c;
 
     Tank(int x, int y) {
@@ -37,7 +37,7 @@ public class Tank extends JFrame{
     void turn_right() { this.change_direction(-av); }
 
     void move() {
-        this.x += Math.round(5 * Math.sin(this.direction));
-        this.y += Math.round(5 * Math.cos(this.direction));
+        this.x += Math.round(1 * Math.sin(this.direction));
+        this.y += Math.round(1 * Math.cos(this.direction));
     }
 }
