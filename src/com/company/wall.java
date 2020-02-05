@@ -17,6 +17,5 @@ public class wall extends JFrame {
         super.paint(g);
         g.setColor(Color.GRAY);
         g.fillRect(this.x , this.y , this.width, this.height);
-        Toolkit.getDefaultToolkit().sync();
     }
 }

@@ -127,70 +127,43 @@ class GamePlay extends JFrame {
         this.getContentPane().setBackground(Color.BLACK);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Ground.getInstance().loadMap(Data.getInstance().get_map_number());
+
         new Timer(
                 10,
                 actionEvent -> {
-                    switch (Data.getInstance().get_map_number()) {
-                        case 1:
-                            Ground.getInstance().map1(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) {
-                                w.paint(getGraphics());
-                            }
-                            break;
-                        case 2:
-                            Ground.getInstance().map2(getGraphics());
-                            for (wall w: Data.getInstance().walls_2) {
-                                w.paint(getGraphics());
-                            }
-                            break;
-                        case 3:
-                            Ground.getInstance().map3(getGraphics());
-                            for (wall w: Data.getInstance().walls_3) {
-                                w.paint(getGraphics());
-                            }
-                            break;
-                        case 4:
-                            Ground.getInstance().map4(getGraphics());
-                            for (wall w: Data.getInstance().walls_4) {
-                                w.paint(getGraphics());
-                            }
-                            break;
-                        case 5:
-                            Ground.getInstance().map5(getGraphics());
-                            for (wall w: Data.getInstance().walls_5) {
-                                w.paint(getGraphics());
-                            }
-                            break;
-                        case 6:
-                            Ground.getInstance().map6(getGraphics());
-                            for (wall w: Data.getInstance().walls_6) {
-                                w.paint(getGraphics());
-                            }
-                            break;
-                    }
-                    if (move_1)
-                        t1.move();
-                    if(left_1)
-                        t1.turn_left();
-                    if(right_1)
-                        t1.turn_right();
-
-                    if (move_2)
-                        t2.move();
-                    if(left_2)
-                        t2.turn_left();
-                    if(right_2)
-                        t2.turn_right();
-
-                    t1.paint(getGraphics());
-                    t2.paint(getGraphics());
-                    for (Bullet b: bullets) {
-                        b.move();
-                        b.paint(getGraphics());
-                    }
                     repaint();
                 }
         ).start();
     }
 
+    public void paint(Graphics g) {
+        super.paint(g);
+        for (wall w: Data.getInstance().walls) {
+            w.paint(g);
+        }
+
+        if (move_1)
+            t1.move();
+        if(left_1)
+            t1.turn_left();
+        if(right_1)
+            t1.turn_right();
+
+        if (move_2)
+            t2.move();
+        if(left_2)
+            t2.turn_left();
+        if(right_2)
+            t2.turn_right();
+
+        t1.paint(g);
+        t2.paint(g);
+        for (Bullet b: bullets) {
+            b.move();
+            b.paint(g);
+        }
+
+        Toolkit.getDefaultToolkit().sync();
+    }
 }

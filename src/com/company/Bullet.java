@@ -17,7 +17,6 @@ public class Bullet extends JFrame{
         super.paint(g);
         g.setColor(c);
         g.fillOval((int)this.x - 10, (int)this.y - 10, 20, 20);
-        Toolkit.getDefaultToolkit().sync();
     }
 
     void move() {

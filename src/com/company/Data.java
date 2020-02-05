@@ -20,12 +20,7 @@ class Data {
     private int bullet_n = 20, p1_life = 100, p2_life = 100, map_number, bullet_p = 5;
     private tank_color p1_color, p2_color;
     private int p1_bullet_n = bullet_n, p2_bullet_n = bullet_n, p1_bullet_p = bullet_p, p2_bullet_p = bullet_p;
-    ArrayList<wall> walls_1 = new ArrayList<>();
-    ArrayList<wall> walls_2 = new ArrayList<>();
-    ArrayList<wall> walls_3 = new ArrayList<>();
-    ArrayList<wall> walls_4 = new ArrayList<>();
-    ArrayList<wall> walls_5 = new ArrayList<>();
-    ArrayList<wall> walls_6 = new ArrayList<>();
+    ArrayList<wall> walls;
 
 
     void set_name_1(String n1) {
