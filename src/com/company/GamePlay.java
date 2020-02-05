@@ -163,5 +163,7 @@ class GamePlay extends JFrame {
             b.move();
             b.paint(g);
         }
+
+        Toolkit.getDefaultToolkit().sync();
     }
 }

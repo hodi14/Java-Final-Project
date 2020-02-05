@@ -23,8 +23,6 @@ public class Tank extends JFrame{
 
         g2d.fillOval((int)this.x - 30, (int)this.y - 30, 60, 60);
         g2d.drawLine((int)this.x, (int)this.y, (int)this.x_gun, (int)this.y_gun);
-
-        Toolkit.getDefaultToolkit().sync();
     }
 
     private void change_direction(double amount) {
