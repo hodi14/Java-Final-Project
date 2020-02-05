@@ -131,33 +131,42 @@ class GamePlay extends JFrame {
                 10,
                 actionEvent -> {
                     switch (Data.getInstance().get_map_number()) {
-                        /*
                         case 1:
-                            Ground.getInstance().map_1(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) { w.paint(getGraphics()); }
+                            Ground.getInstance().map1(getGraphics());
+                            for (wall w: Data.getInstance().walls_1) {
+                                w.paint(getGraphics());
+                            }
                             break;
                         case 2:
-                            Ground.getInstance().map_2(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) { w.paint(getGraphics()); }
+                            Ground.getInstance().map2(getGraphics());
+                            for (wall w: Data.getInstance().walls_2) {
+                                w.paint(getGraphics());
+                            }
                             break;
                         case 3:
-                            Ground.getInstance().map_3(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) { w.paint(getGraphics()); }
+                            Ground.getInstance().map3(getGraphics());
+                            for (wall w: Data.getInstance().walls_3) {
+                                w.paint(getGraphics());
+                            }
                             break;
                         case 4:
-                            Ground.getInstance().map_4(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) { w.paint(getGraphics()); }
+                            Ground.getInstance().map4(getGraphics());
+                            for (wall w: Data.getInstance().walls_4) {
+                                w.paint(getGraphics());
+                            }
                             break;
                         case 5:
-                            Ground.getInstance().map_5(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) { w.paint(getGraphics()); }
+                            Ground.getInstance().map5(getGraphics());
+                            for (wall w: Data.getInstance().walls_5) {
+                                w.paint(getGraphics());
+                            }
                             break;
                         case 6:
-                            Ground.getInstance().map_6(getGraphics());
-                            for (wall w: Data.getInstance().walls_1) { w.paint(getGraphics()); }
+                            Ground.getInstance().map6(getGraphics());
+                            for (wall w: Data.getInstance().walls_6) {
+                                w.paint(getGraphics());
+                            }
                             break;
-
-                         */
                     }
                     if (move_1)
                         t1.move();
