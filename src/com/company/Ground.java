@@ -1,6 +1,5 @@
 package com.company;
 
-import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -38,7 +37,7 @@ class Ground extends JFrame{
         }
     }
 
-    public void map1() {
+    private void map1() {
         Data data = Data.getInstance();
         data.walls = new ArrayList<>(13);
         data.walls.add(new wall (150,0,5,300));
@@ -62,7 +61,7 @@ class Ground extends JFrame{
 
 
     }
-    public void map2(){
+    private void map2(){
         Data data = Data.getInstance();
         data.walls = new ArrayList<>(12);
         data.walls.add(new wall(150,0,5,450));
@@ -79,7 +78,7 @@ class Ground extends JFrame{
         data.walls.add(new wall(450,150,300,5));
     }
 
-    public void map3(){
+    private void map3(){
         Data data = Data.getInstance();
         data.walls = new ArrayList<>(11);
         data.walls.add(new wall(300,0,5,335));
@@ -100,7 +99,7 @@ class Ground extends JFrame{
         data.walls.add(new wall(150,800,380,5));
     }
 
-    public void map4(){
+    private void map4(){
         Data data = Data.getInstance();
         data.walls = new ArrayList<>(12);
         data.walls.add(new wall(0,300,500,5));
@@ -118,7 +117,7 @@ class Ground extends JFrame{
 
     }
 
-    public void map5(){
+    private void map5(){
         Data data = Data.getInstance();
         data.walls = new ArrayList<>(9);
         data.walls.add(new wall(150,0,5,200));
@@ -134,7 +133,7 @@ class Ground extends JFrame{
         data.walls.add(new wall(250,650,5,200));
     }
 
-    public void map6() {
+    private void map6() {
         Data data = Data.getInstance();
         data.walls = new ArrayList<>(8);
         data.walls.add(new wall(150,500,700,5));

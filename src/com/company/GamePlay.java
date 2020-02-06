@@ -5,17 +5,12 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 class GamePlay extends JFrame {
     private Tank t1 = new Tank(250, 250);
     private Tank t2 = new Tank(900, 900);
 
     private ArrayList<Bullet> bullets = new ArrayList<>();
-
-    private final Set<Character> pressed_wasd = new HashSet<>();
-    private final Set<Character> pressed_pl = new HashSet<>();
 
     private boolean right_1, left_1, right_2, left_2, move_1, move_2;
 
@@ -130,10 +125,8 @@ class GamePlay extends JFrame {
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
         new Timer(
-                10,
-                actionEvent -> {
-                    repaint();
-                }
+                5,
+                actionEvent -> repaint()
         ).start();
     }
 
@@ -160,6 +153,14 @@ class GamePlay extends JFrame {
         t1.paint(g);
         t2.paint(g);
         for (Bullet b: bullets) {
+            if (b.hit_tank(t1) && b.c == t2.c) {
+                Data.getInstance().p1_got_shot();
+                System.out.println("t1 got hit");
+            }
+            if (b.hit_tank(t2) && b.c == t1.c) {
+                Data.getInstance().p2_got_shot();
+                System.out.println("t2 got hit");
+            }
             b.move();
             b.paint(g);
         }

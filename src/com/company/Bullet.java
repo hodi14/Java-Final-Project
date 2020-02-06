@@ -23,4 +23,10 @@ public class Bullet extends JFrame{
         this.x += Math.round(5 * Math.sin(this.direction));
         this.y += Math.round(5 * Math.cos(this.direction));
     }
+
+    boolean hit_tank(Tank t) {
+        if ((Math.abs(this.x-10 - t.x-30) <= 40) && (Math.abs(this.y-10 - t.y-30) <= 40))
+            return true;
+        return false;
+    }
 }

@@ -65,5 +65,6 @@ class Data {
     int get_p1_bullet_n() { return this.p1_bullet_n; }
     int get_p2_bullet_n() { return this.p2_bullet_n; }
 
-
+    void p1_got_shot(){ p1_life -= p2_bullet_p; }
+    void p2_got_shot(){ p2_life -= p1_bullet_p; }
 }
