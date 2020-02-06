@@ -88,12 +88,12 @@ class NewGame extends Board{
         super.board.setVisible(false);
     }
     private void map(ActionEvent e) {
-        super.D.set_name_1(p1_name_t.getText());
-        super.D.set_name_2(p2_name_t.getText());
+        Data.getInstance().set_name_1(p1_name_t.getText());
+        Data.getInstance().set_name_2(p2_name_t.getText());
         int c1 = p1_color_c.getSelectedIndex(), c2 = p2_color_c.getSelectedIndex();
         if (c1 != c2) {
-            super.D.set_color_1((Data.tank_color)p1_color_c.getSelectedItem());
-            super.D.set_color_2((Data.tank_color)p2_color_c.getSelectedItem());
+            Data.getInstance().set_color_1((Data.tank_color)p1_color_c.getSelectedItem());
+            Data.getInstance().set_color_2((Data.tank_color)p2_color_c.getSelectedItem());
             new Map().show();
             super.board.setVisible(false);
         }

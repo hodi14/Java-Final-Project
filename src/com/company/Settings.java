@@ -73,9 +73,9 @@ class Settings extends Board {
              int l = Integer.parseInt(life_t.getText());
              int bn = Integer.parseInt(bullet_nt.getText());
              int bp = Integer.parseInt(bullet_pt.getText());
-            super.D.set_life(l);
-            super.D.set_bullet_p(bp);
-            super.D.set_bullet_n(bn);
+            Data.getInstance().set_life(l);
+            Data.getInstance().set_bullet_p(bp);
+            Data.getInstance().set_bullet_n(bn);
             new Menu().show();
             super.board.setVisible(false);
         }
@@ -83,7 +83,6 @@ class Settings extends Board {
                life_t.setText("*");
                bullet_nt.setText("*");
                bullet_pt.setText("*");
-
         }
 
     }

@@ -142,19 +142,13 @@ class GamePlay extends JFrame {
             w.paint(g);
         }
 
-        if (move_1)
-            t1.move();
-        if(left_1)
-            t1.turn_left();
-        if(right_1)
-            t1.turn_right();
+        if (move_1 && t1.can_move()) { t1.move(); }
+        if(left_1) { t1.turn_left(); }
+        if(right_1) { t1.turn_right(); }
 
-        if (move_2)
-            t2.move();
-        if(left_2)
-            t2.turn_left();
-        if(right_2)
-            t2.turn_right();
+        if (move_2 && t2.can_move()) { t2.move(); }
+        if(left_2) { t2.turn_left(); }
+        if(right_2) { t2.turn_right(); }
 
         if (Data.getInstance().get_life_1() > 0) { t1.paint(g); }
         if (Data.getInstance().get_life_2() > 0) { t2.paint(g); }

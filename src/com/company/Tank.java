@@ -38,4 +38,18 @@ public class Tank extends JFrame{
         this.x += Math.round(3 * Math.sin(this.direction));
         this.y += Math.round(3 * Math.cos(this.direction));
     }
+
+    boolean can_move() {
+        if (this.x <= 40 && this.direction > Math.PI && this.direction < 2*Math.PI || this.x <= 40 && this.direction > -Math.PI && this.direction < 0)
+            return false;
+        if ((this.x >= 960 && this.direction > 0 && this.direction < Math.PI) || (this.x >= 960 && this.direction > -2*Math.PI && this.direction < -Math.PI))
+            return false;
+        if ((this.y <= 60 && this.direction > Math.PI/2 && this.direction < 3*Math.PI/2) || (this.y <= 60 && this.direction > -3*Math.PI/2 && this.direction < -Math.PI/2))
+            return false;
+        if ((this.y >= 960 && this.direction > 0 && this.direction < Math.PI/2) || (this.y >= 960 && this.direction > 3*Math.PI/2 && this.direction < 2*Math.PI))
+            return false;
+        if ((this.y >= 960 && this.direction < 0 && this.direction > -Math.PI/2) || (this.y >= 960 && this.direction > -2*Math.PI && this.direction < -3*Math.PI/2))
+            return false;
+        return  true;
+    }
 }
