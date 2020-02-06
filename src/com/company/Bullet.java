@@ -32,10 +32,16 @@ public class Bullet extends JFrame {
     }
 
     Data.hit_wall_e hit_wall(Wall w) {
-        if (Math.abs(this.x - w.x) < 10 && Math.abs(this.x - w.x) > 0 && this.y <= w.y + w.height && this.y >= w.y) {
+        if (this.x - w.x - w.width < 10 && this.x - w.x - w.width > 0 && this.y <= w.y + w.height && this.y >= w.y) {
             return Data.hit_wall_e.Vertical;
         }
-        if (Math.abs(this.y - w.y) < 10 && Math.abs(this.y - w.y) > 0 && this.x <= w.x + w.width && this.x >= w.x) {
+        if (this.y - w.y < 10 && this.y - w.y > 0 && this.x <= w.x + w.width && this.x >= w.x) {
+            return Data.hit_wall_e.Horizontal;
+        }
+        if (w.x - this.x < 10 && w.x - this.x > 0 && this.y <= w.y + w.height && this.y >= w.y) {
+            return Data.hit_wall_e.Vertical;
+        }
+        if (this.y - w.y - w.height < 10 && this.y - w.y - w.height > 0 && this.x <= w.x + w.width && this.x >= w.x) {
             return Data.hit_wall_e.Horizontal;
         }
         return Data.hit_wall_e.None;
