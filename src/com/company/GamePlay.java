@@ -150,19 +150,22 @@ class GamePlay extends JFrame {
         if(right_2)
             t2.turn_right();
 
-        t1.paint(g);
-        t2.paint(g);
+        if (Data.getInstance().get_life_1() > 0) { t1.paint(g); }
+        if (Data.getInstance().get_life_2() > 0) { t2.paint(g); }
+
         for (Bullet b: bullets) {
-            if (b.hit_tank(t1) && b.c == t2.c) {
+            if (b.hit_tank(t1) && b.c == t2.c && b.on_map) {
                 Data.getInstance().p1_got_shot();
-                System.out.println("t1 got hit");
+                b.on_map = false;
             }
-            if (b.hit_tank(t2) && b.c == t1.c) {
+            if (b.hit_tank(t2) && b.c == t1.c && b.on_map) {
                 Data.getInstance().p2_got_shot();
-                System.out.println("t2 got hit");
+                b.on_map = false;
             }
-            b.move();
-            b.paint(g);
+            if (b.on_map) {
+                b.move();
+                b.paint(g);
+            }
         }
 
         Toolkit.getDefaultToolkit().sync();
