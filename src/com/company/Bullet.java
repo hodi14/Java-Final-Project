@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class Bullet extends JFrame {
     double x, y, direction;
     Color c;
-    Boolean on_map = false;
+    Boolean on_map;
 
     Bullet(int x, int y, double d) {
         this.x = x;
@@ -29,5 +29,15 @@ public class Bullet extends JFrame {
 
     boolean hit_tank(Tank t) {
         return (Math.abs(this.x - t.x) < 40 && Math.abs(this.y - t.y) < 40);
+    }
+
+    Data.hit_wall_e hit_wall(Wall w) {
+        if (Math.abs(this.x - w.x) <= 5 && Math.abs(this.x - w.x) >= 0 && this.y <= w.y + w.height && this.y >= w.y) {
+            return Data.hit_wall_e.Vertical;
+        }
+        if (Math.abs(this.y - w.y) <= 5 && Math.abs(this.y - w.y) >= 0 && this.x <= w.x + w.width && this.x >= w.x) {
+            return Data.hit_wall_e.Horizontal;
+        }
+        return Data.hit_wall_e.None;
     }
 }

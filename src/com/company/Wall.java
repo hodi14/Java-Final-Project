@@ -3,10 +3,10 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-class wall extends JFrame {
-    private int x, y, width,height;
+class Wall extends JFrame {
+    int x, y, width, height;
 
-    wall(int x, int y, int w, int h ) {
+    Wall(int x, int y, int w, int h ) {
         this.x = x;
         this.y = y;
         this.width= w;

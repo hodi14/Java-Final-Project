@@ -51,7 +51,7 @@ class GamePlay extends JFrame {
                     right_1 = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    if (Data.getInstance().get_p1_bullet_n() > 0) {
+                    if (Data.getInstance().get_p1_bullet_n() > 0 && Data.getInstance().get_life_1() > 0) {
                         Bullet b = new Bullet((int) t1.x, (int) t1.y, t1.direction);
                         b.c = t1.c;
                         bullets.add(b);
@@ -60,7 +60,10 @@ class GamePlay extends JFrame {
                 }
                 e.consume();
             }
-            public void keyTyped(KeyEvent e) {}
+
+            public void keyTyped(KeyEvent e) {
+            }
+
             public void keyReleased(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (c == 'W' || c == 'w') {
@@ -89,7 +92,7 @@ class GamePlay extends JFrame {
                     right_2 = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (Data.getInstance().get_p2_bullet_n() > 0) {
+                    if (Data.getInstance().get_p2_bullet_n() > 0 && Data.getInstance().get_life_2() > 0) {
                         Bullet b = new Bullet((int) t2.x, (int) t2.y, t2.direction);
                         b.c = t2.c;
                         bullets.add(b);
@@ -98,7 +101,10 @@ class GamePlay extends JFrame {
                 }
                 e.consume();
             }
-            public void keyTyped(KeyEvent e) {}
+
+            public void keyTyped(KeyEvent e) {
+            }
+
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     move_2 = false;
@@ -132,7 +138,7 @@ class GamePlay extends JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
-        for (wall w: Data.getInstance().walls) {
+        for (Wall w: Data.getInstance().walls) {
             w.paint(g);
         }
 
@@ -161,6 +167,17 @@ class GamePlay extends JFrame {
             if (b.hit_tank(t2) && b.c == t1.c && b.on_map) {
                 Data.getInstance().p2_got_shot();
                 b.on_map = false;
+            }
+
+            for (Wall w : Data.getInstance().walls) {
+                switch (b.hit_wall(w)) {
+                    case Horizontal:
+                        b.direction = Math.PI - b.direction;
+                        break;
+                    case Vertical:
+                        b.direction = -b.direction;
+                        break;
+                }
             }
             if (b.on_map) {
                 b.move();
