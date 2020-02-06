@@ -77,7 +77,7 @@ class GamePlay extends JFrame {
         };
         this.addKeyListener(move_wasd);
 
-        KeyListener move_pl = new KeyListener() {
+        KeyListener move_arrow = new KeyListener() {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     move_2 = true;
@@ -112,7 +112,7 @@ class GamePlay extends JFrame {
                 e.consume();
             }
         };
-        this.addKeyListener(move_pl);
+        this.addKeyListener(move_arrow);
 
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
