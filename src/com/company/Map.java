@@ -2,7 +2,11 @@ package com.company;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 class Map extends Board {
@@ -44,5 +48,34 @@ class Map extends Board {
     private void back(ActionEvent e) {
         new NewGame().show();
         super.board.setVisible(false);
+    }
+
+    public void paint(Graphics g) {
+
+        int width = 600;    //width of the image
+        int height = 553;   //height of the image
+
+        // For storing image in RAM
+        BufferedImage image = null;
+
+        // READ IMAGE
+        try
+        {
+            File input_file = new File("C:\\Users\\amir-negar\\Desktop\\MAP1.jpg"); //image file path
+            image = new BufferedImage(width, height,
+                    BufferedImage.TYPE_INT_ARGB);
+
+            image = ImageIO.read(input_file);
+            System.out.println("RI");
+        }
+        catch(IOException e)
+        {
+            System.out.println("Error: "+e);
+        }
+        if (image != null) {
+            g.drawImage(image, 100, 100, 200,300, this);
+            System.out.println("pI");
+        }
+        super.paint(g);
     }
 }
