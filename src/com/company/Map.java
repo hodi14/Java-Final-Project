@@ -36,6 +36,28 @@ class Map extends Board {
 
         start.addActionListener(this::start);
         back.addActionListener(this::back);
+
+        /*
+        JLabel map_1 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
+        map_1.setBounds(100, 50, 200, 200);
+        super.board.add(map_1);
+        JLabel map_2 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
+        map_2.setBounds(400, 50, 200, 200);
+        super.board.add(map_2);
+        JLabel map_3 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
+        map_3.setBounds(700, 50, 200, 200);
+        super.board.add(map_3);
+        JLabel map_4 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
+        map_4.setBounds(100, 300, 200, 200);
+        super.board.add(map_4);
+        JLabel map_5 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
+        map_5.setBounds(400, 300, 200, 200);
+        super.board.add(map_5);
+        JLabel map_6 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
+        map_6.setBounds(700, 300, 200, 200);
+        super.board.add(map_6);
+
+         */
     }
 
     private void start(ActionEvent e) {
@@ -45,37 +67,9 @@ class Map extends Board {
         new GamePlay();
         super.board.setVisible(false);
     }
+
     private void back(ActionEvent e) {
         new NewGame().show();
         super.board.setVisible(false);
-    }
-
-    public void paint(Graphics g) {
-
-        int width = 600;    //width of the image
-        int height = 553;   //height of the image
-
-        // For storing image in RAM
-        BufferedImage image = null;
-
-        // READ IMAGE
-        try
-        {
-            File input_file = new File("C:\\Users\\amir-negar\\Desktop\\MAP1.jpg"); //image file path
-            image = new BufferedImage(width, height,
-                    BufferedImage.TYPE_INT_ARGB);
-
-            image = ImageIO.read(input_file);
-            System.out.println("RI");
-        }
-        catch(IOException e)
-        {
-            System.out.println("Error: "+e);
-        }
-        if (image != null) {
-            g.drawImage(image, 100, 100, 200,300, this);
-            System.out.println("pI");
-        }
-        super.paint(g);
     }
 }

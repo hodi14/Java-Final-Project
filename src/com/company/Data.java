@@ -20,7 +20,7 @@ class Data {
     }
 
     private String p1_name, p2_name;
-    private int p1_life = 100, p2_life = 100, map_number, p1_bullet_n = 20, p2_bullet_n = 20, p1_bullet_p = 5, p2_bullet_p = 5;
+    private int p1_life = 100, p2_life = 100, map_number = 1, p1_bullet_n = 20, p2_bullet_n = 20, p1_bullet_p = 5, p2_bullet_p = 5;
     private tank_color p1_color, p2_color;
     ArrayList<Wall> walls;
 
@@ -69,4 +69,7 @@ class Data {
 
     void p1_got_shot(){ p1_life -= p2_bullet_p; }
     void p2_got_shot(){ p2_life -= p1_bullet_p; }
+
+    void p1_got_shot_own(){ p1_life -= (p1_bullet_p)/2; }
+    void p2_got_shot_own(){ p2_life -= (p2_bullet_p)/2; }
 }

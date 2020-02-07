@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Tank extends JFrame{
-    double x, y, direction, av = 0.04, x_gun, y_gun;
+    double x, y, direction, av = 0.03, x_gun, y_gun;
     Color c;
 
     Tank(int x, int y) {
@@ -35,8 +35,8 @@ public class Tank extends JFrame{
     void turn_right() { this.change_direction(-av); }
 
     void move() {
-        this.x += Math.round(3 * Math.sin(this.direction));
-        this.y += Math.round(3 * Math.cos(this.direction));
+        this.x += Math.round(2 * Math.sin(this.direction));
+        this.y += Math.round(2 * Math.cos(this.direction));
     }
 
     boolean can_move() {
@@ -44,7 +44,7 @@ public class Tank extends JFrame{
             return false;
         if ((this.x >= 960 && this.direction > 0 && this.direction < Math.PI) || (this.x >= 960 && this.direction > -2*Math.PI && this.direction < -Math.PI))
             return false;
-        if ((this.y <= 60 && this.direction > Math.PI/2 && this.direction < 3*Math.PI/2) || (this.y <= 60 && this.direction > -3*Math.PI/2 && this.direction < -Math.PI/2))
+        if ((this.y <= 140 && this.direction > Math.PI/2 && this.direction < 3*Math.PI/2) || (this.y <= 140 && this.direction > -3*Math.PI/2 && this.direction < -Math.PI/2))
             return false;
         if ((this.y >= 960 && this.direction > 0 && this.direction < Math.PI/2) || (this.y >= 960 && this.direction > 3*Math.PI/2 && this.direction < 2*Math.PI))
             return false;

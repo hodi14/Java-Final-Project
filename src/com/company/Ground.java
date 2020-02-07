@@ -39,8 +39,11 @@ class Ground extends JFrame{
 
     private void map1() {
         Data data = Data.getInstance();
-        data.walls = new ArrayList<>(13);
-        data.walls.add(new Wall(150,0,5,300));
+        data.walls = new ArrayList<>(14);
+
+        data.walls.add(new Wall(0, 95, 1000, 5));
+
+        data.walls.add(new Wall(150,100,5,250));
         data.walls.add(new Wall(150,150, 150, 5));
         data.walls.add(new Wall(300,150,5,150));
 
@@ -63,25 +66,31 @@ class Ground extends JFrame{
     }
     private void map2(){
         Data data = Data.getInstance();
-        data.walls = new ArrayList<>(12);
-        data.walls.add(new Wall(150,0,5,450));
-        data.walls.add(new Wall(300,0,5,300));
+        data.walls = new ArrayList<>(13);
+
+        data.walls.add(new Wall(0, 95, 1000, 5));
+
+        data.walls.add(new Wall(150,100,5,350));
+        data.walls.add(new Wall(300,100,5,250));
         data.walls.add(new Wall(150,450,300,5));
         data.walls.add(new Wall(850,700,5,300));
         data.walls.add(new Wall(550,700,300,5));
         data.walls.add(new Wall(700,550,300,5));
         data.walls.add(new Wall(300,450,5,300));
         data.walls.add(new Wall(0,600,150,5));
-        data.walls.add(new Wall(850,0,5,300));
+        data.walls.add(new Wall(850,100,5,300));
         data.walls.add(new Wall(0,850,450,5));
-        data.walls.add(new Wall(450,0,5,150));
-        data.walls.add(new Wall(450,150,300,5));
+        data.walls.add(new Wall(450,100,5,200));
+        data.walls.add(new Wall(450,200,300,5));
     }
 
     private void map3(){
         Data data = Data.getInstance();
-        data.walls = new ArrayList<>(11);
-        data.walls.add(new Wall(300,0,5,335));
+        data.walls = new ArrayList<>(12);
+
+        data.walls.add(new Wall(0, 95, 1000, 5));
+
+        data.walls.add(new Wall(300,100,5,235));
         data.walls.add(new Wall(150,330,150,5));
 
         data.walls.add(new Wall(700,700,5,300));
@@ -93,15 +102,18 @@ class Ground extends JFrame{
         data.walls.add(new Wall(150,450,5,150));
         data.walls.add(new Wall(0,600,155,5));
 
-        data.walls.add(new Wall(500,150,150,5));
-        data.walls.add(new Wall(650,150,5,450));
+        data.walls.add(new Wall(500,200,150,5));
+        data.walls.add(new Wall(650,200,5,430));
 
         data.walls.add(new Wall(150,800,380,5));
     }
 
     private void map4(){
         Data data = Data.getInstance();
-        data.walls = new ArrayList<>(12);
+        data.walls = new ArrayList<>(13);
+
+        data.walls.add(new Wall(0, 95, 1000, 5));
+
         data.walls.add(new Wall(0,300,500,5));
         data.walls.add(new Wall(500,850,500,5));
         data.walls.add(new Wall(500,300,5,200));
@@ -119,12 +131,16 @@ class Ground extends JFrame{
 
     private void map5(){
         Data data = Data.getInstance();
-        data.walls = new ArrayList<>(9);
-        data.walls.add(new Wall(150,0,5,200));
-        data.walls.add(new Wall(350,0,5,200));
-        data.walls.add(new Wall(850,0,5,200));
+        data.walls = new ArrayList<>(10);
 
-        data.walls.add(new Wall(600,150,5,400));
+        data.walls.add(new Wall(0, 95, 1000, 5));
+
+
+        data.walls.add(new Wall(150,100,5,200));
+        data.walls.add(new Wall(350,100,5,200));
+        data.walls.add(new Wall(850,200,5,200));
+
+        data.walls.add(new Wall(600,200,5,350));
         data.walls.add(new Wall(500,450,200,5));
 
         data.walls.add(new Wall(200,550,405,5));
@@ -135,11 +151,15 @@ class Ground extends JFrame{
 
     private void map6() {
         Data data = Data.getInstance();
-        data.walls = new ArrayList<>(8);
+        data.walls = new ArrayList<>(9);
+
+        data.walls.add(new Wall(0, 95, 1000, 5));
+
+
         data.walls.add(new Wall(150,500,700,5));
-        data.walls.add(new Wall(300,150,5,350));
+        data.walls.add(new Wall(300,200,5,300));
         data.walls.add(new Wall(700,500,5, 350));
-        data.walls.add(new Wall(700,0,5,300));
+        data.walls.add(new Wall(700,100,5,200));
         data.walls.add(new Wall(700, 300,300,5));
         data.walls.add(new Wall(0,700,300,5));
         data.walls.add(new Wall(300, 700, 5,300));

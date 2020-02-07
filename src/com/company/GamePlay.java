@@ -14,6 +14,9 @@ class GamePlay extends JFrame {
 
     private boolean right_1, left_1, right_2, left_2, move_1, move_2;
 
+    String p1_life_s, p2_life_s;
+    JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
+
     GamePlay() {
         switch (Data.getInstance().get_color_1().toString()) {
             case "Blue":
@@ -60,10 +63,7 @@ class GamePlay extends JFrame {
                 }
                 e.consume();
             }
-
-            public void keyTyped(KeyEvent e) {
-            }
-
+            public void keyTyped(KeyEvent e) {}
             public void keyReleased(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (c == 'W' || c == 'w') {
@@ -101,10 +101,7 @@ class GamePlay extends JFrame {
                 }
                 e.consume();
             }
-
-            public void keyTyped(KeyEvent e) {
-            }
-
+            public void keyTyped(KeyEvent e) {}
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     move_2 = false;
@@ -131,16 +128,14 @@ class GamePlay extends JFrame {
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
         new Timer(
-                5,
+                10,
                 actionEvent -> repaint()
         ).start();
     }
 
     public void paint(Graphics g) {
         super.paint(g);
-        for (Wall w: Data.getInstance().walls) {
-            w.paint(g);
-        }
+        for (Wall w: Data.getInstance().walls) { w.paint(g); }
 
         if (move_1 && t1.can_move()) { t1.move(); }
         if(left_1) { t1.turn_left(); }
@@ -156,6 +151,7 @@ class GamePlay extends JFrame {
         for (Bullet b: bullets) {
             if (b.hit_tank(t1) && b.c == t2.c && b.on_map) {
                 Data.getInstance().p1_got_shot();
+                this.remove(p1_life);
                 b.on_map = false;
             }
             if (b.hit_tank(t2) && b.c == t1.c && b.on_map) {
@@ -179,6 +175,38 @@ class GamePlay extends JFrame {
             }
         }
 
+        show_life_1();
+        show_life_2();
+
         Toolkit.getDefaultToolkit().sync();
+    }
+
+    void show_life_1() {
+        p1_life_s = Integer.toString(Data.getInstance().get_life_1());
+        p1_life.setText(p1_life_s);
+        p1_life.setBounds(32, 0, 200, 50);
+        p1_life.setForeground(t1.c);
+        p1_life.setFont(new Font(p1_life.getFont().getName(), p1_life.getFont().getStyle(), 40));
+        this.add(p1_life);
+
+        heart1.setText("♥");
+        heart1.setBounds(0, 1, 50, 50);
+        heart1.setForeground(t1.c);
+        heart1.setFont(new Font(heart1.getFont().getName(), heart1.getFont().getStyle(), 45));
+        this.add(heart1);
+    }
+    void show_life_2() {
+        p2_life_s = Integer.toString(Data.getInstance().get_life_2());
+        p2_life.setText(p2_life_s);
+        p2_life.setBounds(915, 0, 200, 50);
+        p2_life.setForeground(t2.c);
+        p2_life.setFont(new Font(p2_life.getFont().getName(), p2_life.getFont().getStyle(), 40));
+        this.add(p2_life);
+
+        heart2.setText("♥");
+        heart2.setBounds(882, 1, 50, 50);
+        heart2.setForeground(t2.c);
+        heart2.setFont(new Font(heart2.getFont().getName(), heart2.getFont().getStyle(), 45));
+        this.add(heart2);
     }
 }

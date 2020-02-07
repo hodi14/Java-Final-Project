@@ -87,6 +87,7 @@ class NewGame extends Board{
         new Menu().show();
         super.board.setVisible(false);
     }
+
     private void map(ActionEvent e) {
         Data.getInstance().set_name_1(p1_name_t.getText());
         Data.getInstance().set_name_2(p2_name_t.getText());
@@ -95,9 +96,8 @@ class NewGame extends Board{
             Data.getInstance().set_color_1((Data.tank_color)p1_color_c.getSelectedItem());
             Data.getInstance().set_color_2((Data.tank_color)p2_color_c.getSelectedItem());
             Map m = new Map();
-            Graphics g = super.board.getGraphics();
             m.show();
-            m.paint(g);
+            super.board.setVisible(false);
         }
     }
 }

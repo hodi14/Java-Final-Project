@@ -3,7 +3,7 @@ package com.company;
 import java.awt.*;
 import javax.swing.*;
 
-public class Board extends JFrame{
+public class Board{
     JFrame board = new JFrame("TANKS");
     Data D = Data.getInstance();
 
@@ -11,7 +11,7 @@ public class Board extends JFrame{
         board.setSize(1000, 1000);
         board.getContentPane().setBackground(Color.DARK_GRAY);
         board.setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void show() {
