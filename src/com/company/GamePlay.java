@@ -13,11 +13,11 @@ class GamePlay extends JFrame {
 
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
-    private boolean right_1, left_1, right_2, left_2, move_1, move_2;
+    private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1 = false, pass_wall_2 = false;
 
-    String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
-    JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
-    JLabel p1_bullet = new JLabel(), p2_bullet = new JLabel(), bullet1 = new JLabel(), bullet2 = new JLabel();
+    private String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
+    private JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
+    private JLabel p1_bullet = new JLabel(), p2_bullet = new JLabel(), bullet1 = new JLabel(), bullet2 = new JLabel();
 
     GamePlay() {
         switch (Data.getInstance().get_color_1().toString()) {
@@ -137,13 +137,20 @@ class GamePlay extends JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
-        for (Wall w: Data.getInstance().walls) { w.paint(g); }
+        
+        pass_wall_1 = true; pass_wall_2 = true;
+        for (Wall w: Data.getInstance().walls) {
+            w.paint(g);
 
-        if (move_1 && t1.can_move()) { t1.move(); }
+            if (t1.hit_wall(w)) { pass_wall_1 = false; }
+            if (t2.hit_wall(w)) { pass_wall_2 = false; }
+        }
+
+        if (move_1 && t1.can_move() && pass_wall_1) { t1.move(); }
         if(left_1) { t1.turn_left(); }
         if(right_1) { t1.turn_right(); }
 
-        if (move_2 && t2.can_move()) { t2.move(); }
+        if (move_2 && t2.can_move() && pass_wall_2) { t2.move(); }
         if(left_2) { t2.turn_left(); }
         if(right_2) { t2.turn_right(); }
 
