@@ -70,6 +70,6 @@ class Data {
     void p1_got_shot(){ p1_life -= p2_bullet_p; }
     void p2_got_shot(){ p2_life -= p1_bullet_p; }
 
-    void p1_got_shot_own(){ p1_life -= (p1_bullet_p)/2; }
-    void p2_got_shot_own(){ p2_life -= (p2_bullet_p)/2; }
+    int get_bullet_1() { return p1_bullet_n; }
+    int get_bullet_2() { return p2_bullet_n; }
 }

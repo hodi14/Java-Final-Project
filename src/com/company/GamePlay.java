@@ -9,14 +9,15 @@ import java.util.ArrayList;
 
 class GamePlay extends JFrame {
     private Tank t1 = new Tank(250, 250);
-    private Tank t2 = new Tank(900, 250);
+    private Tank t2 = new Tank(750, 750);
 
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
     private boolean right_1, left_1, right_2, left_2, move_1, move_2;
 
-    String p1_life_s, p2_life_s;
+    String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
     JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
+    JLabel p1_bullet = new JLabel(), p2_bullet = new JLabel(), bullet1 = new JLabel(), bullet2 = new JLabel();
 
     GamePlay() {
         switch (Data.getInstance().get_color_1().toString()) {
@@ -129,7 +130,7 @@ class GamePlay extends JFrame {
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
         new Timer(
-                7,
+                5,
                 actionEvent -> repaint()
         ).start();
     }
@@ -181,13 +182,16 @@ class GamePlay extends JFrame {
         show_life_1();
         show_life_2();
 
+        show_bullet_1();
+        show_bullet_2();
+
         Toolkit.getDefaultToolkit().sync();
     }
 
     private void show_life_1() {
         p1_life_s = Integer.toString(Data.getInstance().get_life_1());
         p1_life.setText(p1_life_s);
-        p1_life.setBounds(32, 0, 200, 50);
+        p1_life.setBounds(32, 0, 100, 50);
         p1_life.setForeground(t1.c);
         p1_life.setFont(new Font(p1_life.getFont().getName(), p1_life.getFont().getStyle(), 40));
         this.add(p1_life);
@@ -201,7 +205,7 @@ class GamePlay extends JFrame {
     private void show_life_2() {
         p2_life_s = Integer.toString(Data.getInstance().get_life_2());
         p2_life.setText(p2_life_s);
-        p2_life.setBounds(915, 0, 200, 50);
+        p2_life.setBounds(915, 0, 100, 50);
         p2_life.setForeground(t2.c);
         p2_life.setFont(new Font(p2_life.getFont().getName(), p2_life.getFont().getStyle(), 40));
         this.add(p2_life);
@@ -211,5 +215,34 @@ class GamePlay extends JFrame {
         heart2.setForeground(t2.c);
         heart2.setFont(new Font(heart2.getFont().getName(), heart2.getFont().getStyle(), 45));
         this.add(heart2);
+    }
+
+    private void show_bullet_1() {
+        p1_bullet_s = Integer.toString(Data.getInstance().get_p1_bullet_n());
+        p1_bullet.setText(p1_bullet_s);
+        p1_bullet.setBounds(150, 0, 100, 50);
+        p1_bullet.setForeground(t1.c);
+        p1_bullet.setFont(new Font(p1_bullet.getFont().getName(), p1_bullet.getFont().getStyle(), 40));
+        this.add(p1_bullet);
+
+        bullet1.setText("•");
+        bullet1.setBounds(130, 1, 50, 50);
+        bullet1.setForeground(t1.c);
+        bullet1.setFont(new Font(bullet1.getFont().getName(), bullet1.getFont().getStyle(), 45));
+        this.add(bullet1);
+    }
+    private void show_bullet_2() {
+        p2_bullet_s = Integer.toString(Data.getInstance().get_p2_bullet_n());
+        p2_bullet.setText(p2_bullet_s);
+        p2_bullet.setBounds(800, 0, 100, 50);
+        p2_bullet.setForeground(t2.c);
+        p2_bullet.setFont(new Font(p2_bullet.getFont().getName(), p2_bullet.getFont().getStyle(), 40));
+        this.add(p2_bullet);
+
+        bullet2.setText("•");
+        bullet2.setBounds(782, 1, 50, 50);
+        bullet2.setForeground(t2.c);
+        bullet2.setFont(new Font(bullet2.getFont().getName(), bullet2.getFont().getStyle(), 45));
+        this.add(bullet2);
     }
 }
