@@ -18,6 +18,31 @@ class Map extends Board {
         JButton start = new JButton("START THE GAME");
         JButton map = new JButton("MAP NUMBER");
 
+        JLabel map1_img = new JLabel(new ImageIcon("C:\\Users\\amir-negar\\Documents\\Java-Final-Project\\map1.png"));
+        map1_img.setBounds(100, 50, 200, 200);
+        board.add(map1_img);
+
+        JLabel map2_img = new JLabel(new ImageIcon("C:\\Users\\amir-negar\\Documents\\Java-Final-Project\\map2.png"));
+        map2_img.setBounds(400, 50, 200, 200);
+        board.add(map2_img);
+
+        JLabel map3_img = new JLabel(new ImageIcon("C:\\Users\\amir-negar\\Documents\\Java-Final-Project\\map3.png"));
+        map3_img.setBounds(700, 50, 200, 200);
+        board.add(map3_img);
+
+        JLabel map4_img = new JLabel(new ImageIcon("C:\\Users\\amir-negar\\Documents\\Java-Final-Project\\map4.png"));
+        map4_img.setBounds(100, 300, 200, 200);
+        board.add(map4_img);
+
+        JLabel map5_img = new JLabel(new ImageIcon("C:\\Users\\amir-negar\\Documents\\Java-Final-Project\\map5.png"));
+        map5_img.setBounds(400, 300, 200, 200);
+        board.add(map5_img);
+
+        JLabel map6_img = new JLabel(new ImageIcon("C:\\Users\\amir-negar\\Documents\\Java-Final-Project\\map6.png"));
+        map6_img.setBounds(700, 300, 200, 200);
+        board.add(map6_img);
+
+
         map.setBounds(300, 550, 200, 50);
         back.setBounds(400, 750, 200, 50);
         start.setBounds(400, 650, 200, 50);
@@ -37,27 +62,6 @@ class Map extends Board {
         start.addActionListener(this::start);
         back.addActionListener(this::back);
 
-        /*
-        JLabel map_1 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
-        map_1.setBounds(100, 50, 200, 200);
-        super.board.add(map_1);
-        JLabel map_2 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
-        map_2.setBounds(400, 50, 200, 200);
-        super.board.add(map_2);
-        JLabel map_3 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
-        map_3.setBounds(700, 50, 200, 200);
-        super.board.add(map_3);
-        JLabel map_4 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
-        map_4.setBounds(100, 300, 200, 200);
-        super.board.add(map_4);
-        JLabel map_5 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
-        map_5.setBounds(400, 300, 200, 200);
-        super.board.add(map_5);
-        JLabel map_6 = new JLabel(new ImageIcon("C:\\Users\\Alireza Hodaee\\Desktop\\test.JPG"));
-        map_6.setBounds(700, 300, 200, 200);
-        super.board.add(map_6);
-
-         */
     }
 
     private void start(ActionEvent e) {
