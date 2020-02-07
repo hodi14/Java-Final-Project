@@ -8,6 +8,8 @@ public class Bullet extends JFrame {
     double x, y, direction;
     Color c;
     Boolean on_map;
+    final static int LIFE = 200;
+    int age = Bullet.LIFE;
 
     Bullet(int x, int y, double d) {
         this.x = x;
@@ -19,8 +21,16 @@ public class Bullet extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(this.c);
-        g.fillOval((int)this.x - 10, (int)this.y - 10, 20, 20);
+        g.fillOval((int)this.x - 10, (int)this.y - 10, 10, 10);
     }
+
+    void growOld() {
+        this.age--;
+        if (this.age <= 0) {
+            this.on_map = false;
+        }
+    }
+
 
     void move() {
         this.x += (double)Math.round(8.0D * Math.sin(this.direction));

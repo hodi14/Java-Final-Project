@@ -6,9 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+
 class GamePlay extends JFrame {
     private Tank t1 = new Tank(250, 250);
-    private Tank t2 = new Tank(900, 900);
+    private Tank t2 = new Tank(900, 250);
 
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
@@ -128,7 +129,7 @@ class GamePlay extends JFrame {
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
         new Timer(
-                10,
+                7,
                 actionEvent -> repaint()
         ).start();
     }
@@ -171,7 +172,9 @@ class GamePlay extends JFrame {
             }
             if (b.on_map) {
                 b.move();
+                b.growOld();
                 b.paint(g);
+
             }
         }
 
@@ -181,7 +184,7 @@ class GamePlay extends JFrame {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    void show_life_1() {
+    private void show_life_1() {
         p1_life_s = Integer.toString(Data.getInstance().get_life_1());
         p1_life.setText(p1_life_s);
         p1_life.setBounds(32, 0, 200, 50);
@@ -195,7 +198,7 @@ class GamePlay extends JFrame {
         heart1.setFont(new Font(heart1.getFont().getName(), heart1.getFont().getStyle(), 45));
         this.add(heart1);
     }
-    void show_life_2() {
+    private void show_life_2() {
         p2_life_s = Integer.toString(Data.getInstance().get_life_2());
         p2_life.setText(p2_life_s);
         p2_life.setBounds(915, 0, 200, 50);
