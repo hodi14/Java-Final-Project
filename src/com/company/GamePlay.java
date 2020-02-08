@@ -13,7 +13,7 @@ class GamePlay extends JFrame {
 
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
-    private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1 = false, pass_wall_2 = false;
+    private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1, pass_wall_2;
 
     private String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
     private JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
@@ -137,7 +137,7 @@ class GamePlay extends JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
-        
+
         pass_wall_1 = true; pass_wall_2 = true;
         for (Wall w: Data.getInstance().walls) {
             w.paint(g);
@@ -182,7 +182,6 @@ class GamePlay extends JFrame {
                 b.move();
                 b.growOld();
                 b.paint(g);
-
             }
         }
 

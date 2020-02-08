@@ -52,16 +52,16 @@ public class Tank extends JFrame{
     }
 
     boolean hit_wall(Wall w) {
-            if (w.y - this.y <= 35 && w.y - this.y >= 30 && this.x >= w.x - 30 && this.x <= w.x + w.width + 30) {
-                if ((this.direction > 0 && this.direction < Math.PI / 2) || (this.direction > 3 * Math.PI / 2 && this.direction < 2 * Math.PI)) { return true; }
-                if ((this.direction < 0 && this.direction > -Math.PI / 2) || (this.direction > -2 * Math.PI && this.direction < -3 * Math.PI / 2)) { return true; }
+            if (w.y - this.y <= 29 && w.y - this.y >= 25 && this.x >= w.x - 30 && this.x <= w.x + w.width + 30) {
+                if ((this.direction >= 0 && this.direction <= Math.PI / 2) || (this.direction >= 3 * Math.PI / 2 && this.direction <= 2 * Math.PI)) { return true; }
+                if ((this.direction <= 0 && this.direction >= -Math.PI / 2) || (this.direction >= -2 * Math.PI && this.direction <= -3 * Math.PI / 2)) { return true; }
             }
-            if (-w.y - w.height + this.y <= 35 && -w.y - w.height + this.y >= 30 && this.x >= w.x - 30 && this.x <= w.x + w.width + 30)
-                if ((this.direction > Math.PI/2 && this.direction < 3*Math.PI/2) || (this.direction > -3*Math.PI/2 && this.direction < -Math.PI/2)) { return true; }
-            if (this.x - w.x - w.width <= 35 && this.x - w.x - w.width >= 30 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
-                if ((this.direction > Math.PI && this.direction < 2*Math.PI) || (this.direction > -Math.PI && this.direction < 0)) { return true; }
-            if (w.x - this.x <= 35 && w.x - this.x >= 30 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
-                if ((this.direction > 0 && this.direction < Math.PI) || (this.direction > -2*Math.PI && this.direction < -Math.PI)) { return true; }
+            if (-w.y - w.height + this.y <= 29 && -w.y - w.height + this.y >= 25 && this.x >= w.x - 30 && this.x <= w.x + w.width + 30)
+                if ((this.direction >= Math.PI/2 && this.direction <= 3*Math.PI/2) || (this.direction >= -3*Math.PI/2 && this.direction <= -Math.PI/2)) { return true; }
+            if (this.x - w.x - w.width <= 29 && this.x - w.x - w.width >= 25 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
+                if ((this.direction >= Math.PI && this.direction <= 2*Math.PI) || (this.direction >= -Math.PI && this.direction <= 0)) { return true; }
+            if (w.x - this.x <= 29 && w.x - this.x >= 25 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
+                if ((this.direction >= 0 && this.direction <= Math.PI) || (this.direction >= -2*Math.PI && this.direction <= -Math.PI)) { return true; }
 
         return false;
     }

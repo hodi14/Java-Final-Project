@@ -12,11 +12,14 @@ class NewGame extends Board{
     private JComboBox p2_color_c = new JComboBox(Data.tank_color.values());
 
     NewGame() {
-        JLabel logo_l1 = new JLabel("       |███████|]▄▄▄▄▄▄▄▄▃");
-        JLabel logo_l2 = new JLabel("▂▄▅█████████▅▄▃▂I");
-        JLabel logo_l3 = new JLabel("███████████████████].");
-        JLabel logo_l4 = new JLabel("  ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤  ");
-        JLabel logo_l5 = new JLabel(" TANKS GAME");
+        JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\logo.png"));
+        logo_img.setBounds(110, 0, 800, 400);
+        board.add(logo_img);
+        JLabel name = new JLabel("  TANKS GAME");
+        name.setBounds(100, 350, 800, 200);
+        name.setFont(new Font(name.getFont().getName(), name.getFont().getStyle(), 100));
+        name.setForeground(Color.green);
+        super.board.add(name);
 
         JButton map = new JButton("CHOOSE MAP");
         JButton back = new JButton("GO BACK");
@@ -25,40 +28,25 @@ class NewGame extends Board{
         JButton p1_color_b = new JButton("PLAYER 1 COLOR");
         JButton p2_color_b = new JButton("PLAYER 2 COLOR");
 
-        logo_l1.setBounds(200, 10, 800, 200);
-        logo_l1.setFont(new Font(logo_l1.getFont().getName(), logo_l1.getFont().getStyle(), 40));
-        logo_l2.setBounds(200, 60, 800, 200);
-        logo_l2.setFont(new Font(logo_l2.getFont().getName(), logo_l2.getFont().getStyle(), 40));
-        logo_l3.setBounds(200, 110, 800, 200);
-        logo_l3.setFont(new Font(logo_l3.getFont().getName(), logo_l3.getFont().getStyle(), 40));
-        logo_l4.setBounds(200, 160, 800, 200);
-        logo_l4.setFont(new Font(logo_l4.getFont().getName(), logo_l4.getFont().getStyle(), 40));
-        logo_l5.setBounds(100, 260, 800, 200);
-        logo_l5.setFont(new Font(logo_l5.getFont().getName(), logo_l5.getFont().getStyle(), 100));
+        map.setBounds(400, 700, 200, 50);
+        back.setBounds(400, 800, 200, 50);
+        p1_name_b.setBounds(50, 550, 200, 50);
+        p2_name_b.setBounds(550, 550, 200, 50);
+        p1_color_b.setBounds(50, 610, 200, 50);
+        p2_color_b.setBounds(550, 610, 200, 50);
 
-        map.setBounds(400, 650, 200, 50);
-        back.setBounds(400, 750, 200, 50);
-        p1_name_b.setBounds(50, 500, 200, 50);
-        p2_name_b.setBounds(550, 500, 200, 50);
-        p1_color_b.setBounds(50, 560, 200, 50);
-        p2_color_b.setBounds(550, 560, 200, 50);
+        p1_name_t.setBounds(250, 550, 200, 50);
+        p2_name_t.setBounds(750, 550, 200, 50);
 
-        p1_name_t.setBounds(250, 500, 200, 50);
-        p2_name_t.setBounds(750, 500, 200, 50);
+        p1_color_c.setBounds(250, 610, 200, 50);
+        p2_color_c.setBounds(750, 610, 200, 50);
 
-        p1_color_c.setBounds(250, 560, 200, 50);
-        p2_color_c.setBounds(750, 560, 200, 50);
-
-        map.setBackground(Color.GRAY);
-        back.setBackground(Color.GRAY);
-        p1_name_b.setBackground(Color.GRAY);
-        p2_name_b.setBackground(Color.GRAY);
-        p1_color_b.setBackground(Color.GRAY);
-        p2_color_b.setBackground(Color.GRAY);
-
-        logo_l1.setForeground(Color.GREEN);
-        logo_l2.setForeground(Color.GREEN);
-        logo_l3.setForeground(Color.GREEN);
+        map.setBackground(Color.GREEN);
+        back.setBackground(Color.GREEN);
+        p1_name_b.setBackground(Color.GREEN);
+        p2_name_b.setBackground(Color.GREEN);
+        p1_color_b.setBackground(Color.GREEN);
+        p2_color_b.setBackground(Color.GREEN);
 
         super.board.add(map);
         super.board.add(back);
@@ -69,12 +57,6 @@ class NewGame extends Board{
 
         super.board.add(p1_name_t);
         super.board.add(p2_name_t);
-
-        super.board.add(logo_l1);
-        super.board.add(logo_l2);
-        super.board.add(logo_l3);
-        super.board.add(logo_l4);
-        super.board.add(logo_l5);
 
         super.board.add(p1_color_c);
         super.board.add(p2_color_c);
