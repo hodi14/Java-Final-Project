@@ -16,9 +16,9 @@ class NewGame extends Board{
         logo_img.setBounds(110, 0, 800, 400);
         board.add(logo_img);
         JLabel name = new JLabel("  TANKS GAME");
-        name.setBounds(100, 350, 800, 200);
+        name.setBounds(100, 320, 800, 200);
         name.setFont(new Font(name.getFont().getName(), name.getFont().getStyle(), 100));
-        name.setForeground(Color.green);
+        name.setForeground(new Color(0, 150, 0));
         super.board.add(name);
 
         JButton map = new JButton("CHOOSE MAP");
@@ -41,12 +41,12 @@ class NewGame extends Board{
         p1_color_c.setBounds(250, 610, 200, 50);
         p2_color_c.setBounds(750, 610, 200, 50);
 
-        map.setBackground(Color.GREEN);
-        back.setBackground(Color.GREEN);
-        p1_name_b.setBackground(Color.GREEN);
-        p2_name_b.setBackground(Color.GREEN);
-        p1_color_b.setBackground(Color.GREEN);
-        p2_color_b.setBackground(Color.GREEN);
+        map.setBackground(new Color(0, 150, 0));
+        back.setBackground(new Color(0, 150, 0));
+        p1_name_b.setBackground(new Color(0, 150, 0));
+        p2_name_b.setBackground(new Color(0, 150, 0));
+        p1_color_b.setBackground(new Color(0, 150, 0));
+        p2_color_b.setBackground(new Color(0, 150, 0));
 
         super.board.add(map);
         super.board.add(back);

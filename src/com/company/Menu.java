@@ -10,9 +10,9 @@ class Menu extends Board {
         logo_img.setBounds(110, 0, 800, 400);
         board.add(logo_img);
         JLabel name = new JLabel("  TANKS GAME");
-        name.setBounds(100, 350, 800, 200);
+        name.setBounds(100, 320, 800, 200);
         name.setFont(new Font(name.getFont().getName(), name.getFont().getStyle(), 100));
-        name.setForeground(Color.green);
+        name.setForeground(new Color(0, 150, 0));
         super.board.add(name);
 
         JButton exit = new JButton("EXIT");
@@ -23,9 +23,9 @@ class Menu extends Board {
         settings.setBounds(400, 650, 200, 50);
         exit.setBounds(400, 750, 200, 50);
 
-        newgame.setBackground(Color.GREEN);
-        settings.setBackground(Color.GREEN);
-        exit.setBackground(Color.GREEN);
+        newgame.setBackground(new Color(0, 150, 0));
+        settings.setBackground(new Color(0, 150, 0));
+        exit.setBackground(new Color(0, 150, 0));
 
         super.board.add(newgame);
         super.board.add(settings);

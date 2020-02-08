@@ -14,9 +14,9 @@ class Settings extends Board {
         logo_img.setBounds(110, 0, 800, 400);
         board.add(logo_img);
         JLabel name = new JLabel("  TANKS GAME");
-        name.setBounds(100, 350, 800, 200);
+        name.setBounds(100, 320, 800, 200);
         name.setFont(new Font(name.getFont().getName(), name.getFont().getStyle(), 100));
-        name.setForeground(Color.green);
+        name.setForeground(new Color(0, 150, 0));
         super.board.add(name);
 
         JButton back = new JButton("GO BACK");
@@ -29,10 +29,10 @@ class Settings extends Board {
         bullet_nb.setBounds(300, 750, 200, 50);
         back.setBounds(400, 850, 200, 50);
 
-        back.setBackground(Color.GREEN);
-        life_b.setBackground(Color.GREEN);
-        bullet_pb.setBackground(Color.GREEN);
-        bullet_nb.setBackground(Color.GREEN);
+        back.setBackground(new Color(0, 150, 0));
+        life_b.setBackground(new Color(0, 150, 0));
+        bullet_pb.setBackground(new Color(0, 150, 0));
+        bullet_nb.setBackground(new Color(0, 150, 0));
 
         super.board.add(back);
         super.board.add(life_b);
