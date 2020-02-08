@@ -63,6 +63,10 @@ class GamePlay extends JFrame {
                         Data.getInstance().p1_shot();
                     }
                 }
+
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    System.out.println("pause");
+                }
                 e.consume();
             }
             public void keyTyped(KeyEvent e) {}
@@ -137,6 +141,14 @@ class GamePlay extends JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
+        if (Data.getInstance().get_life_1() <= 0) {
+            new GameOver(Data.getInstance().get_name_2(), t2.c).show();
+            this.dispose();
+        }
+        if (Data.getInstance().get_life_2() <= 0) {
+            new GameOver(Data.getInstance().get_name_1(), t1.c).show();
+            this.dispose();
+        }
 
         pass_wall_1 = true; pass_wall_2 = true;
         for (Wall w: Data.getInstance().walls) {
@@ -146,11 +158,11 @@ class GamePlay extends JFrame {
             if (t2.hit_wall(w)) { pass_wall_2 = false; }
         }
 
-        if (move_1 && t1.can_move() && pass_wall_1) { t1.move(); }
+        if (move_1 && t1.can_move() && pass_wall_1 && !t1.hit_tank(t2)) { t1.move(); }
         if(left_1) { t1.turn_left(); }
         if(right_1) { t1.turn_right(); }
 
-        if (move_2 && t2.can_move() && pass_wall_2) { t2.move(); }
+        if (move_2 && t2.can_move() && pass_wall_2 && !t2.hit_tank(t1)) { t2.move(); }
         if(left_2) { t2.turn_left(); }
         if(right_2) { t2.turn_right(); }
 

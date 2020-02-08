@@ -21,6 +21,7 @@ class Data {
 
     private String p1_name, p2_name;
     private int p1_life = 100, p2_life = 100, map_number = 1, p1_bullet_n = 20, p2_bullet_n = 20, p1_bullet_p = 5, p2_bullet_p = 5;
+    int starting_life = 100, starting_bullet = 20;
     private tank_color p1_color, p2_color;
     ArrayList<Wall> walls;
 
@@ -40,6 +41,7 @@ class Data {
     void set_life(int l) {
         p1_life = l;
         p2_life = l;
+        starting_life = l;
     }
     void set_bullet_p(int bp) {
         p1_bullet_p = bp;
@@ -48,13 +50,14 @@ class Data {
     void set_bullet_n(int bn) {
         p1_bullet_n = bn;
         p2_bullet_n = bn;
+        starting_bullet = bn;
     }
 
     void p1_shot() { p1_bullet_n--; }
     void p2_shot() { p2_bullet_n--; }
 
     String get_name_1() { return this.p1_name; }
-    String get_name_2() { return this.p1_name; }
+    String get_name_2() { return this.p2_name; }
 
     tank_color get_color_1() { return this.p1_color; }
     tank_color get_color_2() { return this.p2_color; }

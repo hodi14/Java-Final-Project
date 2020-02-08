@@ -66,7 +66,7 @@ public class Tank extends JFrame{
         return false;
     }
 
-    boolean hit_tank() {
+    boolean hit_tank(Tank t) {
         return false;
     }
 }

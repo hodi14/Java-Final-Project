@@ -12,40 +12,39 @@ class Menu extends Board {
         JLabel name = new JLabel("  TANKS GAME");
         name.setBounds(100, 320, 800, 200);
         name.setFont(new Font(name.getFont().getName(), name.getFont().getStyle(), 100));
-        name.setForeground(new Color(0, 150, 0));
-        super.board.add(name);
+        name.setForeground(Color.LIGHT_GRAY);
+        board.add(name);
+
+        JButton newgame = new JButton("NEW GAME");
+        newgame.setBounds(400, 550, 200, 50);
+        newgame.setBackground(Color.LIGHT_GRAY);
+        board.add(newgame);
+        newgame.addActionListener(this::newgame);
+
+        JButton settings = new JButton("SETTINGS");
+        settings.setBounds(400, 650, 200, 50);
+        settings.setBackground(Color.LIGHT_GRAY);
+        board.add(settings);
+        settings.addActionListener(this::settings);
 
         JButton exit = new JButton("EXIT");
-        JButton settings = new JButton("SETTINGS");
-        JButton newgame = new JButton("NEW GAME");
-
-        newgame.setBounds(400, 550, 200, 50);
-        settings.setBounds(400, 650, 200, 50);
         exit.setBounds(400, 750, 200, 50);
-
-        newgame.setBackground(new Color(0, 150, 0));
-        settings.setBackground(new Color(0, 150, 0));
-        exit.setBackground(new Color(0, 150, 0));
-
-        super.board.add(newgame);
-        super.board.add(settings);
-        super.board.add(exit);
-
-        newgame.addActionListener(this::newgame);
-        settings.addActionListener(this::settings);
+        exit.setBackground(Color.LIGHT_GRAY);
+        board.add(exit);
         exit.addActionListener(this::exit);
     }
 
     private void newgame(ActionEvent e) {
         new NewGame().show();
-        super.board.setVisible(false);
+        board.setVisible(false);
     }
+
     private void settings(ActionEvent e) {
         new Settings().show();
-        super.board.setVisible(false);
-
+        board.setVisible(false);
     }
+
     private void exit(ActionEvent e) {
-        super.board.dispose();
+        board.dispose();
     }
 }

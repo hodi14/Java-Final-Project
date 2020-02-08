@@ -14,13 +14,9 @@ class Map extends Board {
     private JComboBox map_number = new JComboBox(map_numbers);
 
     Map() {
-        JButton back = new JButton("GO BACK");
-        JButton start = new JButton("START THE GAME");
-        JButton map = new JButton("MAP NUMBER");
-
         JLabel map1_lb = new JLabel("1");
         map1_lb.setBounds(80, 50, 50, 50);
-        map1_lb.setForeground(new Color(0, 150, 0));
+        map1_lb.setForeground(Color.LIGHT_GRAY);
         map1_lb.setFont(new Font(map1_lb.getFont().getName(), map1_lb.getFont().getStyle(), 30));
         board.add(map1_lb);
         JLabel map1_img = new JLabel(new ImageIcon(".\\resource\\map1.png"));
@@ -29,7 +25,7 @@ class Map extends Board {
 
         JLabel map2_lb = new JLabel("2");
         map2_lb.setBounds(380, 50, 50, 50);
-        map2_lb.setForeground(new Color(0, 150, 0));
+        map2_lb.setForeground(Color.LIGHT_GRAY);
         map2_lb.setFont(new Font(map2_lb.getFont().getName(), map2_lb.getFont().getStyle(), 30));
         board.add(map2_lb);
         JLabel map2_img = new JLabel(new ImageIcon(".\\resource\\map2.png"));
@@ -38,7 +34,7 @@ class Map extends Board {
 
         JLabel map3_lb = new JLabel("3");
         map3_lb.setBounds(680, 50, 50, 50);
-        map3_lb.setForeground(new Color(0, 150, 0));
+        map3_lb.setForeground(Color.LIGHT_GRAY);
         map3_lb.setFont(new Font(map3_lb.getFont().getName(), map3_lb.getFont().getStyle(), 30));
         board.add(map3_lb);
         JLabel map3_img = new JLabel(new ImageIcon(".\\resource\\map3.png"));
@@ -47,7 +43,7 @@ class Map extends Board {
 
         JLabel map4_lb = new JLabel("4");
         map4_lb.setBounds(80, 300, 50, 50);
-        map4_lb.setForeground(new Color(0, 150, 0));
+        map4_lb.setForeground(Color.LIGHT_GRAY);
         map4_lb.setFont(new Font(map4_lb.getFont().getName(), map4_lb.getFont().getStyle(), 30));
         board.add(map4_lb);
         JLabel map4_img = new JLabel(new ImageIcon(".\\resource\\map4.png"));
@@ -56,7 +52,7 @@ class Map extends Board {
 
         JLabel map5_lb = new JLabel("5");
         map5_lb.setBounds(380, 300, 50, 50);
-        map5_lb.setForeground(new Color(0, 150, 0));
+        map5_lb.setForeground(Color.LIGHT_GRAY);
         map5_lb.setFont(new Font(map5_lb.getFont().getName(), map5_lb.getFont().getStyle(), 30));
         board.add(map5_lb);
         JLabel map5_img = new JLabel(new ImageIcon(".\\resource\\map5.png"));
@@ -65,33 +61,33 @@ class Map extends Board {
 
         JLabel map6_lb = new JLabel("6");
         map6_lb.setBounds(680, 300, 50, 50);
-        map6_lb.setForeground(new Color(0, 150, 0));
+        map6_lb.setForeground(Color.LIGHT_GRAY);
         map6_lb.setFont(new Font(map6_lb.getFont().getName(), map6_lb.getFont().getStyle(), 30));
         board.add(map6_lb);
         JLabel map6_img = new JLabel(new ImageIcon(".\\resource\\map6.png"));
         map6_img.setBounds(700, 300, 200, 200);
         board.add(map6_img);
 
-
-        map.setBounds(300, 550, 200, 50);
+        JButton back = new JButton("GO BACK");
         back.setBounds(400, 750, 200, 50);
-        start.setBounds(400, 650, 200, 50);
-
-        map_number.setBounds(500, 550, 200, 50);
-
-        back.setBackground(new Color(0, 150, 0));
-        start.setBackground(new Color(0, 150, 0));
-        map.setBackground(new Color(0, 150, 0));
-
-        super.board.add(start);
-        super.board.add(back);
-        super.board.add(map);
-
-        super.board.add(map_number);
-
-        start.addActionListener(this::start);
+        back.setBackground(Color.LIGHT_GRAY);
+        board.add(back);
         back.addActionListener(this::back);
 
+        JButton start = new JButton("START THE GAME");
+        start.setBounds(400, 650, 200, 50);
+        start.setBackground(Color.LIGHT_GRAY);
+        board.add(start);
+        start.addActionListener(this::start);
+
+        JLabel map = new JLabel("MAP NUMBER");
+        map.setBounds(300, 550, 200, 50);
+        map.setBackground(Color.LIGHT_GRAY);
+        map.setOpaque(true);
+        board.add(map);
+
+        map_number.setBounds(500, 550, 200, 50);
+        board.add(map_number);
     }
 
     private void start(ActionEvent e) {
@@ -99,11 +95,11 @@ class Map extends Board {
         int mi = Character.getNumericValue(mc);
         Data.getInstance().set_map(mi);
         new GamePlay();
-        super.board.setVisible(false);
+        board.setVisible(false);
     }
 
     private void back(ActionEvent e) {
         new NewGame().show();
-        super.board.setVisible(false);
+        board.setVisible(false);
     }
 }

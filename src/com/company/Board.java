@@ -8,14 +8,12 @@ public class Board{
 
     Board() {
         board.setSize(1000, 1000);
-        board.getContentPane().setBackground(Color.DARK_GRAY);
+        board.getContentPane().setBackground(Color.BLACK);
         board.setResizable(false);
+        board.setLocationRelativeTo(null);
+        board.setLayout(null);
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void show() {
-        board.setLocationRelativeTo(null);
-        board.setLayout(null);
-        board.setVisible(true);
-    }
+    public void show() { board.setVisible(true); }
 }

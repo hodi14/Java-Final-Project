@@ -16,50 +16,53 @@ class Settings extends Board {
         JLabel name = new JLabel("  TANKS GAME");
         name.setBounds(100, 320, 800, 200);
         name.setFont(new Font(name.getFont().getName(), name.getFont().getStyle(), 100));
-        name.setForeground(new Color(0, 150, 0));
-        super.board.add(name);
+        name.setForeground(Color.LIGHT_GRAY);
+        board.add(name);
 
         JButton back = new JButton("GO BACK");
-        JButton life_b = new JButton("STARTING LIFE");
-        JButton bullet_pb = new JButton("BULLET POWER");
-        JButton bullet_nb = new JButton("BUULET NUMBER");
-
-        life_b.setBounds(300, 550, 200, 50);
-        bullet_pb.setBounds(300, 650, 200, 50);
-        bullet_nb.setBounds(300, 750, 200, 50);
         back.setBounds(400, 850, 200, 50);
+        back.setBackground(Color.LIGHT_GRAY);
+        board.add(back);
+        back.addActionListener(this::back);
 
-        back.setBackground(new Color(0, 150, 0));
-        life_b.setBackground(new Color(0, 150, 0));
-        bullet_pb.setBackground(new Color(0, 150, 0));
-        bullet_nb.setBackground(new Color(0, 150, 0));
+        JLabel life = new JLabel("              STARTING LIFE");
+        life.setBounds(300, 550, 200, 50);
+        life.setBackground(Color.LIGHT_GRAY);
+        life.setOpaque(true);
+        board.add(life);
 
-        super.board.add(back);
-        super.board.add(life_b);
-        super.board.add(bullet_nb);
-        super.board.add(bullet_pb);
+        JLabel bullet_p = new JLabel("              BULLET POWER");
+        bullet_p.setBounds(300, 650, 200, 50);
+        bullet_p.setBackground(Color.LIGHT_GRAY);
+        bullet_p.setOpaque(true);
+        board.add(bullet_p);
+
+        JLabel bullet_n = new JLabel("              BULLET NUMBER");
+        bullet_n.setBounds(300, 750, 200, 50);
+        bullet_n.setBackground(Color.LIGHT_GRAY);
+        bullet_n.setOpaque(true);
+        board.add(bullet_n);
 
         life_t.setBounds(500, 550, 200, 50);
+        board.add(life_t);
+
         bullet_pt.setBounds(500, 650, 200, 50);
+        board.add(bullet_pt);
+
         bullet_nt.setBounds(500, 750, 200, 50);
-
-        super.board.add(life_t);
-        super.board.add(bullet_pt);
-        super.board.add(bullet_nt);
-
-        back.addActionListener(this::back);
+        board.add(bullet_nt);
     }
 
     private void back(ActionEvent e) {
         try {
-             int l = Integer.parseInt(life_t.getText());
-             int bn = Integer.parseInt(bullet_nt.getText());
-             int bp = Integer.parseInt(bullet_pt.getText());
+            int l = Integer.parseInt(life_t.getText());
+            int bn = Integer.parseInt(bullet_nt.getText());
+            int bp = Integer.parseInt(bullet_pt.getText());
             Data.getInstance().set_life(l);
             Data.getInstance().set_bullet_p(bp);
             Data.getInstance().set_bullet_n(bn);
             new Menu().show();
-            super.board.setVisible(false);
+            board.setVisible(false);
         }
         catch (Exception e1){
                life_t.setText("*");
