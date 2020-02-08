@@ -3,7 +3,7 @@ package com.company;
 import java.awt.*;
 import javax.swing.*;
 
-public class Board{
+class Board{
     JFrame board = new JFrame("TANKS");
 
     Board() {

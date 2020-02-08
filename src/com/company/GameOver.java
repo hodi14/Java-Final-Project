@@ -6,11 +6,25 @@ import javax.swing.*;
 
 public class GameOver extends Board {
     GameOver(String winner_s, Color c) {
-        JLabel winner_j = new JLabel(winner_s + "  WON");
-        winner_j.setBounds(200, 300, 800, 200);
-        winner_j.setFont(new Font(winner_j.getFont().getName(), winner_j.getFont().getStyle(), 80));
+        JLabel winner_j = new JLabel(winner_s);
+        winner_j.setBounds(20, 200, 500, 200);
+        winner_j.setFont(new Font(winner_j.getFont().getName(), winner_j.getFont().getStyle(), 70));
         winner_j.setForeground(c);
         board.add(winner_j);
+
+        JLabel won = new JLabel("WON !!!");
+        won.setBounds(20, 300, 500, 200);
+        won.setFont(new Font(winner_j.getFont().getName(), winner_j.getFont().getStyle(), 70));
+        won.setForeground(c);
+        board.add(won);
+
+        JLabel cup_img = null;
+        if (c == Color.GREEN) { cup_img = new JLabel(new ImageIcon(".\\resource\\green_win.png")); }
+        if (c == Color.RED) { cup_img = new JLabel(new ImageIcon(".\\resource\\red_win.png")); }
+        if (c == Color.BLUE) { cup_img = new JLabel(new ImageIcon(".\\resource\\blue_win.png")); }
+
+        cup_img.setBounds(520, 100, 450, 500);
+        board.add(cup_img);
 
         JButton rematch = new JButton("REMATCH");
         rematch.setBounds(400, 650, 200, 50);
