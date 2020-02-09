@@ -141,6 +141,7 @@ class GamePlay extends JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
+
         if (Data.getInstance().get_life_1() <= 0) {
             new GameOver(Data.getInstance().get_name_2(), t2.c).show();
             this.dispose();
@@ -158,11 +159,11 @@ class GamePlay extends JFrame {
             if (t2.hit_wall(w)) { pass_wall_2 = false; }
         }
 
-        if (move_1 && t1.can_move() && pass_wall_1 && !t1.hit_tank(t2)) { t1.move(); }
+        if (move_1 && t1.can_move() && pass_wall_1) { t1.move(); }
         if(left_1) { t1.turn_left(); }
         if(right_1) { t1.turn_right(); }
 
-        if (move_2 && t2.can_move() && pass_wall_2 && !t2.hit_tank(t1)) { t2.move(); }
+        if (move_2 && t2.can_move() && pass_wall_2) { t2.move(); }
         if(left_2) { t2.turn_left(); }
         if(right_2) { t2.turn_right(); }
 
@@ -238,12 +239,12 @@ class GamePlay extends JFrame {
     private void show_bullet_1() {
         p1_bullet_s = Integer.toString(Data.getInstance().get_p1_bullet_n());
         p1_bullet.setText(p1_bullet_s);
-        p1_bullet.setBounds(150, 0, 100, 50);
+        p1_bullet.setBounds(170, 0, 100, 50);
         p1_bullet.setForeground(t1.c);
         p1_bullet.setFont(new Font(p1_bullet.getFont().getName(), p1_bullet.getFont().getStyle(), 40));
         this.add(p1_bullet);
 
-        bullet1.setText("•");
+        bullet1.setText("◙");
         bullet1.setBounds(130, 1, 50, 50);
         bullet1.setForeground(t1.c);
         bullet1.setFont(new Font(bullet1.getFont().getName(), bullet1.getFont().getStyle(), 45));
@@ -252,12 +253,12 @@ class GamePlay extends JFrame {
     private void show_bullet_2() {
         p2_bullet_s = Integer.toString(Data.getInstance().get_p2_bullet_n());
         p2_bullet.setText(p2_bullet_s);
-        p2_bullet.setBounds(800, 0, 100, 50);
+        p2_bullet.setBounds(820, 0, 100, 50);
         p2_bullet.setForeground(t2.c);
         p2_bullet.setFont(new Font(p2_bullet.getFont().getName(), p2_bullet.getFont().getStyle(), 40));
         this.add(p2_bullet);
 
-        bullet2.setText("•");
+        bullet2.setText("◙");
         bullet2.setBounds(782, 1, 50, 50);
         bullet2.setForeground(t2.c);
         bullet2.setFont(new Font(bullet2.getFont().getName(), bullet2.getFont().getStyle(), 45));

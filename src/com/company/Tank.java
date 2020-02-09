@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Tank extends JFrame{
-    double x, y, direction, av = 0.03, x_gun, y_gun;
+    double x, y, direction, av = 0.025, x_gun, y_gun;
     Color c;
 
     Tank(int x, int y) {
@@ -63,10 +63,6 @@ public class Tank extends JFrame{
             if (w.x - this.x <= 29 && w.x - this.x >= 25 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
                 if ((this.direction >= 0 && this.direction <= Math.PI) || (this.direction >= -2*Math.PI && this.direction <= -Math.PI)) { return true; }
 
-        return false;
-    }
-
-    boolean hit_tank(Tank t) {
         return false;
     }
 }

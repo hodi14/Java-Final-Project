@@ -34,13 +34,13 @@ public class Bullet extends JFrame {
         this.y += (double)Math.round(8.0D * Math.cos(this.direction));
     }
 
-    boolean hit_tank(Tank t) { return (Math.abs(this.x - t.x) < 30 && Math.abs(this.y - t.y) < 30); }
+    boolean hit_tank(Tank t) { return (Math.abs(this.x - t.x) <= 25 && Math.abs(this.y - t.y) <= 25); }
 
     Data.hit_wall_e hit_wall(Wall w) {
-        if (this.x - w.x - w.width < 10 && this.x - w.x - w.width > 0 && this.y <= w.y + w.height && this.y >= w.y) { return Data.hit_wall_e.Vertical; }
-        if (this.y - w.y < 10 && this.y - w.y > 0 && this.x <= w.x + w.width && this.x >= w.x) { return Data.hit_wall_e.Horizontal; }
-        if (w.x - this.x < 10 && w.x - this.x > 0 && this.y <= w.y + w.height && this.y >= w.y) { return Data.hit_wall_e.Vertical; }
-        if (this.y - w.y - w.height < 10 && this.y - w.y - w.height > 0 && this.x <= w.x + w.width && this.x >= w.x) { return Data.hit_wall_e.Horizontal; }
+        if (this.x - w.x - w.width < 10 && this.x - w.x - w.width > 0 && this.y <= w.y + w.height + 5 && this.y >= w.y - 5) { return Data.hit_wall_e.Vertical; }
+        if (this.y - w.y < 10 && this.y - w.y > 0 && this.x <= w.x + w.width + 5 && this.x >= w.x - 5) { return Data.hit_wall_e.Horizontal; }
+        if (w.x - this.x < 10 && w.x - this.x > 0 && this.y <= w.y + w.height + 5 && this.y >= w.y - 5) { return Data.hit_wall_e.Vertical; }
+        if (this.y - w.y - w.height < 10 && this.y - w.y - w.height > 0 && this.x <= w.x + w.width + 5 && this.x >= w.x - 5) { return Data.hit_wall_e.Horizontal; }
 
         return Data.hit_wall_e.None;
     }
