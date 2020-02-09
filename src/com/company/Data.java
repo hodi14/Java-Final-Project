@@ -72,4 +72,16 @@ class Data {
 
     void p1_got_shot(){ p1_life -= p2_bullet_p; }
     void p2_got_shot(){ p2_life -= p1_bullet_p; }
+
+    void get_bullet_1() { p1_bullet_n += starting_bullet; }
+    void get_bullet_2() { p2_bullet_n += starting_bullet; }
+
+    void get_life_p1() {
+        if (p1_life < starting_life * 0.9) { p1_life += starting_life/10; }
+        else { p1_life = starting_life; }
+    }
+    void get_life_p2() {
+        if (p2_life < starting_life * 0.9) { p2_life += starting_life/10; }
+        else { p2_life = starting_life; }
+    }
 }

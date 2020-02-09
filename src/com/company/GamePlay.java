@@ -142,6 +142,11 @@ class GamePlay extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
 
+        Life l = new Life(100, 150);
+        l.paint(g);
+        new Bullet_p(200, 200).paint(g, t1.c);
+        new Shield(400, 200).paint(g);
+
         if (Data.getInstance().get_life_1() <= 0) {
             new GameOver(Data.getInstance().get_name_2(), t2.c).show();
             this.dispose();
@@ -247,7 +252,7 @@ class GamePlay extends JFrame {
         bullet1.setText("◙");
         bullet1.setBounds(130, 1, 50, 50);
         bullet1.setForeground(t1.c);
-        bullet1.setFont(new Font(bullet1.getFont().getName(), bullet1.getFont().getStyle(), 45));
+        bullet1.setFont(new Font(bullet1.getFont().getName(), bullet1.getFont().getStyle(), 40));
         this.add(bullet1);
     }
     private void show_bullet_2() {
@@ -261,7 +266,7 @@ class GamePlay extends JFrame {
         bullet2.setText("◙");
         bullet2.setBounds(782, 1, 50, 50);
         bullet2.setForeground(t2.c);
-        bullet2.setFont(new Font(bullet2.getFont().getName(), bullet2.getFont().getStyle(), 45));
+        bullet2.setFont(new Font(bullet2.getFont().getName(), bullet2.getFont().getStyle(), 40));
         this.add(bullet2);
     }
 }
