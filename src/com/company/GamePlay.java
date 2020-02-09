@@ -18,8 +18,8 @@ class GamePlay extends JFrame {
     private Life life;
     private Shield shield;
 
-    private int bullet_timer = 1500;
-    private int life_sheild_timer = 3000;
+    private int bullet_timer = 750;
+    private int life_shield_timer = 1301, life_shield_rand;
 
     private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1, pass_wall_2;
 
@@ -160,21 +160,47 @@ class GamePlay extends JFrame {
         bullet_timer--;
 
         if (bullet_timer == 1499) { make_bp1(); }
-        if (bp1.on_map) { bp1.paint(g, t1.c); }
-        bp1.growOld();
+        if (bp1.on_map) {
+            bp1.paint(g, t1.c);
+            bp1.growOld();
+        }
 
         if (bullet_timer == 1499) { make_bp2(); }
-        if (bp2.on_map) { bp2.paint(g, t2.c); }
-        bp2.growOld();
-
-        if (life_sheild_timer == 0) {
-            life_sheild_timer = 3000;
+        if (bp2.on_map) {
+            bp2.paint(g, t2.c);
+            bp2.growOld();
         }
-        life_sheild_timer--;
 
-        //Life l = new Life(100, 150);
-        //l.paint(g);
-        //new Shield(400, 200).paint(g);
+        if (life_shield_timer == 0) {
+            life_shield_timer = 2701;
+            if (life_shield_rand == 1)
+                life.on_map = false;
+            if (life_shield_rand == 2)
+                shield.on_map = false;
+        }
+        life_shield_timer--;
+
+        if (life_shield_timer == 2700) {
+            life_shield_rand = rand.nextInt(3);
+            switch(life_shield_rand) {
+                case 1:
+                    make_life();
+                    break;
+                case 2:
+                    make_shield();
+                    break;
+            }
+        }
+        if (life_shield_rand == 1)
+            if (life.on_map) {
+                life.paint(g);
+                life.growOld();
+            }
+        if (life_shield_rand == 2)
+            if (shield.on_map) {
+                shield.paint(g);
+                shield.growOld();
+            }
 
         if (Data.getInstance().get_life_1() <= 0) {
             new GameOver(Data.getInstance().get_name_2(), t2.c).show();
@@ -231,6 +257,18 @@ class GamePlay extends JFrame {
                 b.paint(g);
             }
         }
+
+        if (life_shield_rand == 1)
+            if (life.on_map) {
+                if (t1.hit_life(life)) {
+                    Data.getInstance().get_life_p1();
+                    life.on_map = false;
+                }
+                if (t2.hit_life(life)) {
+                    Data.getInstance().get_life_p2();
+                    life.on_map = false;
+                }
+            }
 
         show_life_1();
         show_life_2();
@@ -313,7 +351,6 @@ class GamePlay extends JFrame {
 
         bp1 = made_random ? new Bullet_p(bullet_x, bullet_y) : new Bullet_p(50, 200);
     }
-
     private void make_bp2() {
         int bullet_x = 0, bullet_y = 0;
         boolean made_random = false;
@@ -327,5 +364,34 @@ class GamePlay extends JFrame {
         }
 
         bp2 = made_random ? new Bullet_p(bullet_x, bullet_y) : new Bullet_p(600, 800);
+    }
+
+    void make_life() {
+        int life_x = 0, life_y = 0;
+        boolean made_random = false;
+        for (Wall w : Data.getInstance().walls) {
+            if (life_x > 10 && life_y > 150 && !(life_x >= w.x - 10 && life_x <= w.x + w.width + 10) && !(life_y >= w.y - 10 && life_y <= w.y + w.height + 10)) {
+                made_random = true;
+                break;
+            }
+            else
+                life_x = rand.nextInt(950) + 10; life_y = rand.nextInt(800) + 150;
+        }
+
+        life = made_random ? new Life(life_x, life_y) : new Life(600, 600);
+    }
+    void make_shield() {
+        int shield_x = 0, shield_y = 0;
+        boolean made_random = false;
+        for (Wall w : Data.getInstance().walls) {
+            if (shield_x > 10 && shield_y > 150 && !(shield_x >= w.x - 10 && shield_x <= w.x + w.width + 10) && !(shield_y >= w.y - 10 && shield_y <= w.y + w.height + 10)) {
+                made_random = true;
+                break;
+            }
+            else
+                shield_x = rand.nextInt(950) + 10; shield_y = rand.nextInt(800) + 150;
+        }
+
+        shield = made_random ? new Shield(shield_x, shield_y) : new Shield(600, 600);
     }
 }

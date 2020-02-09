@@ -14,4 +14,9 @@ class Shield extends PowerUp {
         g2d.setFont(new Font(g2d.getFont().getName(), g2d.getFont().getStyle(), 37));
         g2d.drawString("◆", this.x-1, this.y+27);
     }
+
+    void growOld() {
+        this.age--;
+        if (this.age <= 0) { this.on_map = false; }
+    }
 }

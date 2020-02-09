@@ -14,4 +14,9 @@ class Life extends PowerUp {
         g2d.setFont(new Font(g2d.getFont().getName(), g2d.getFont().getStyle(), 38));
         g2d.drawString("♥", this.x+2, this.y+29);
     }
+
+    void growOld() {
+        this.age--;
+        if (this.age <= 0) { this.on_map = false; }
+    }
 }
