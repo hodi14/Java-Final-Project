@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 class GamePlay extends JFrame {
@@ -13,7 +14,16 @@ class GamePlay extends JFrame {
 
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
+    private Bullet_p bp1 = new Bullet_p(0, 0); private Bullet_p bp2 = new Bullet_p(0, 0);
+    private Life life;
+    private Shield shield;
+
+    private int bullet_timer = 1500;
+    private int life_sheild_timer = 3000;
+
     private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1, pass_wall_2;
+
+    private Random rand = new Random();
 
     private String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
     private JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
@@ -142,10 +152,29 @@ class GamePlay extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
 
-        Life l = new Life(100, 150);
-        l.paint(g);
-        new Bullet_p(200, 200).paint(g, t1.c);
-        new Shield(400, 200).paint(g);
+        if (bullet_timer == 0) {
+            bullet_timer = 1500;
+            bp1.on_map = false;
+            bp2.on_map = false;
+        }
+        bullet_timer--;
+
+        if (bullet_timer == 1499) { make_bp1(); }
+        if (bp1.on_map) { bp1.paint(g, t1.c); }
+        bp1.growOld();
+
+        if (bullet_timer == 1499) { make_bp2(); }
+        if (bp2.on_map) { bp2.paint(g, t2.c); }
+        bp2.growOld();
+
+        if (life_sheild_timer == 0) {
+            life_sheild_timer = 3000;
+        }
+        life_sheild_timer--;
+
+        //Life l = new Life(100, 150);
+        //l.paint(g);
+        //new Shield(400, 200).paint(g);
 
         if (Data.getInstance().get_life_1() <= 0) {
             new GameOver(Data.getInstance().get_name_2(), t2.c).show();
@@ -268,5 +297,35 @@ class GamePlay extends JFrame {
         bullet2.setForeground(t2.c);
         bullet2.setFont(new Font(bullet2.getFont().getName(), bullet2.getFont().getStyle(), 40));
         this.add(bullet2);
+    }
+
+    private void make_bp1() {
+        int bullet_x = 0, bullet_y = 0;
+        boolean made_random = false;
+        for (Wall w : Data.getInstance().walls) {
+            if (bullet_x > 10 && bullet_y > 150 && !(bullet_x >= w.x - 10 && bullet_x <= w.x + w.width + 10) && !(bullet_y >= w.y - 10 && bullet_y <= w.y + w.height + 10)) {
+                made_random = true;
+                break;
+            }
+            else
+                bullet_x = rand.nextInt(950) + 10; bullet_y = rand.nextInt(800) + 150;
+        }
+
+        bp1 = made_random ? new Bullet_p(bullet_x, bullet_y) : new Bullet_p(50, 200);
+    }
+
+    private void make_bp2() {
+        int bullet_x = 0, bullet_y = 0;
+        boolean made_random = false;
+        for (Wall w : Data.getInstance().walls) {
+            if (bullet_x > 10 && bullet_y > 150 && !(bullet_x >= w.x - 10 && bullet_x <= w.x + w.width + 10) && !(bullet_y >= w.y - 10 && bullet_y <= w.y + w.height + 10)) {
+                made_random = true;
+                break;
+            }
+            else
+                bullet_x = rand.nextInt(950) + 10; bullet_y = rand.nextInt(800) + 150;
+        }
+
+        bp2 = made_random ? new Bullet_p(bullet_x, bullet_y) : new Bullet_p(600, 800);
     }
 }

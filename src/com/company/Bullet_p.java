@@ -14,4 +14,9 @@ class Bullet_p extends PowerUp {
         g2d.setFont(new Font(g2d.getFont().getName(), g2d.getFont().getStyle(), 28));
         g2d.drawString("◙", this.x+3, this.y+24);
     }
+
+    void growOld() {
+        this.age--;
+        if (this.age <= 0) { this.on_map = false; }
+    }
 }
