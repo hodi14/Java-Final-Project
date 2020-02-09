@@ -82,8 +82,7 @@ class NewGame extends Board{
         if (c1 != c2) {
             Data.getInstance().set_color_1((Data.tank_color)p1_color_c.getSelectedItem());
             Data.getInstance().set_color_2((Data.tank_color)p2_color_c.getSelectedItem());
-            Map m = new Map();
-            m.show();
+            new Map().show();
             board.setVisible(false);
         }
     }

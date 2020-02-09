@@ -20,14 +20,13 @@ public class Bullet extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(this.c);
-        g.fillOval((int)this.x - 10, (int)this.y - 10, 10, 10);
+        g.fillOval((int)this.x, (int)this.y, 10, 10);
     }
 
     void growOld() {
         this.age--;
         if (this.age <= 0) { this.on_map = false; }
     }
-
 
     void move() {
         this.x += (double)Math.round(8.0D * Math.sin(this.direction));
