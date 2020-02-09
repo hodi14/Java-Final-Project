@@ -40,6 +40,8 @@ public class GameOver extends Board {
     }
 
     private void back(ActionEvent e) {
+        Data.getInstance().set_life(Data.getInstance().starting_life);
+        Data.getInstance().set_bullet_n(Data.getInstance().starting_bullet);
         new Menu().show();
         board.setVisible(false);
     }
