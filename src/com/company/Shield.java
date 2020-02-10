@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 class Shield extends PowerUp {
+    int time;
     Shield(int x, int y) { super(x, y); }
 
     public void paint(Graphics g) {
-        super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.YELLOW);
         g2d.drawOval(this.x , this.y , 30, 30);
@@ -19,4 +19,6 @@ class Shield extends PowerUp {
         this.age--;
         if (this.age <= 0) { this.on_map = false; }
     }
+
+    void time_limit() { this.time--; }
 }

@@ -7,7 +7,6 @@ class Life extends PowerUp {
     Life(int x, int y) { super(x, y); }
 
     public void paint(Graphics g) {
-        super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.PINK);
         g2d.drawOval(this.x , this.y , 30, 30);

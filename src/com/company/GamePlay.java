@@ -19,7 +19,7 @@ class GamePlay extends JFrame {
     private Shield shield;
 
     private int bullet_timer = 750;
-    private int life_shield_timer = 1301, life_shield_rand;
+    private int life_shield_timer = 2601, life_shield_rand, shield_timer = 1000;
 
     private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1, pass_wall_2;
 
@@ -28,6 +28,7 @@ class GamePlay extends JFrame {
     private String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
     private JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
     private JLabel p1_bullet = new JLabel(), p2_bullet = new JLabel(), bullet1 = new JLabel(), bullet2 = new JLabel();
+    private JLabel shield1 = new JLabel(), shield2 = new JLabel();
 
     GamePlay() {
         switch (Data.getInstance().get_color_1().toString()) {
@@ -152,6 +153,15 @@ class GamePlay extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
 
+        if (t1.has_shield || t2.has_shield)
+            shield.time_limit();
+        if (shield != null && shield.time <= 0) {
+            t1.has_shield = false;
+            t2.has_shield = false;
+            shield2.setText("");
+            shield1.setText("");
+        }
+
         if (bullet_timer == 0) {
             bullet_timer = 1500;
             bp1.on_map = false;
@@ -159,13 +169,14 @@ class GamePlay extends JFrame {
         }
         bullet_timer--;
 
-        if (bullet_timer == 1499) { make_bp1(); }
+        if (bullet_timer == 1499) {
+            make_bp1();
+            make_bp2();
+        }
         if (bp1.on_map) {
             bp1.paint(g, t1.c);
             bp1.growOld();
         }
-
-        if (bullet_timer == 1499) { make_bp2(); }
         if (bp2.on_map) {
             bp2.paint(g, t2.c);
             bp2.growOld();
@@ -173,33 +184,27 @@ class GamePlay extends JFrame {
 
         if (life_shield_timer == 0) {
             life_shield_timer = 2701;
-            if (life_shield_rand == 1)
+            if (life_shield_rand % 2 == 1)
                 life.on_map = false;
-            if (life_shield_rand == 2)
+            if (life_shield_rand % 2 == 0)
                 shield.on_map = false;
         }
         life_shield_timer--;
 
-        if (life_shield_timer == 2700) {
-            life_shield_rand = rand.nextInt(3);
-            switch(life_shield_rand) {
-                case 1:
-                    make_life();
-                    break;
-                case 2:
-                    make_shield();
-                    break;
-            }
+        if (life_shield_timer == 2600) {
+            life_shield_rand = rand.nextInt(4);
+            if (life_shield_rand % 2 == 1) { make_life(); }
+            if (life_shield_rand % 2 == 0) { make_shield(); }
         }
-        if (life_shield_rand == 1)
-            if (life.on_map) {
-                life.paint(g);
-                life.growOld();
-            }
-        if (life_shield_rand == 2)
+        if (shield != null && life_shield_rand % 2 == 0)
             if (shield.on_map) {
                 shield.paint(g);
                 shield.growOld();
+            }
+        if (life != null && life_shield_rand % 2 == 1)
+            if (life.on_map) {
+                life.paint(g);
+                life.growOld();
             }
 
         if (Data.getInstance().get_life_1() <= 0) {
@@ -231,13 +236,19 @@ class GamePlay extends JFrame {
         if (Data.getInstance().get_life_2() > 0) { t2.paint(g); }
 
         for (Bullet b: bullets) {
-            if (b.hit_tank(t1) && b.c == t2.c && b.on_map) {
+            if (b.hit_tank(t1) && b.c == t2.c && b.on_map && !t1.has_shield) {
                 Data.getInstance().p1_got_shot();
-                this.remove(p1_life);
                 b.on_map = false;
             }
-            if (b.hit_tank(t2) && b.c == t1.c && b.on_map) {
+            if (b.hit_tank(t1) && b.c == t2.c && b.on_map && t1.has_shield) {
+                b.on_map = false;
+            }
+
+            if (b.hit_tank(t2) && b.c == t1.c && b.on_map && !t2.has_shield) {
                 Data.getInstance().p2_got_shot();
+                b.on_map = false;
+            }
+            if (b.hit_tank(t2) && b.c == t1.c && b.on_map && t2.has_shield) {
                 b.on_map = false;
             }
 
@@ -258,7 +269,7 @@ class GamePlay extends JFrame {
             }
         }
 
-        if (life_shield_rand == 1)
+        if (life_shield_rand % 2 == 1)
             if (life.on_map) {
                 if (t1.hit_life(life)) {
                     Data.getInstance().get_life_p1();
@@ -269,6 +280,33 @@ class GamePlay extends JFrame {
                     life.on_map = false;
                 }
             }
+        if (life_shield_rand % 2 == 0)
+            if (shield.on_map) {
+                if (t1.hit_shield(shield)) {
+                    t1.has_shield = true;
+                    shield.time = 1000;
+                    shield.on_map = false;
+                }
+                if (t2.hit_shield(shield)) {
+                    t2.has_shield = true;
+                    shield.time = 1000;
+                    shield.on_map = false;
+                }
+            }
+
+        if (t1.hit_bullet(bp1) && bp1.on_map) {
+            Data.getInstance().get_bullet_1();
+            bp1.on_map = false;
+        }
+        if (t2.hit_bullet(bp2) && bp2.on_map) {
+            Data.getInstance().get_bullet_2();
+            bp2.on_map = false;
+        }
+
+        if (t1.has_shield)
+            show_shield_1();
+        if (t2.has_shield)
+            show_shield_2();
 
         show_life_1();
         show_life_2();
@@ -337,6 +375,21 @@ class GamePlay extends JFrame {
         this.add(bullet2);
     }
 
+    private void show_shield_1() {
+        shield1.setText("◆");
+        shield1.setBounds(230, 1, 50, 50);
+        shield1.setForeground(t1.c);
+        shield1.setFont(new Font(shield1.getFont().getName(), shield1.getFont().getStyle(), 45));
+        this.add(shield1);
+    }
+    private void show_shield_2() {
+        shield2.setText("◆");
+        shield2.setBounds(712, 1, 50, 50);
+        shield2.setForeground(t2.c);
+        shield2.setFont(new Font(shield2.getFont().getName(), shield2.getFont().getStyle(), 45));
+        this.add(shield2);
+    }
+
     private void make_bp1() {
         int bullet_x = 0, bullet_y = 0;
         boolean made_random = false;
@@ -381,17 +434,18 @@ class GamePlay extends JFrame {
         life = made_random ? new Life(life_x, life_y) : new Life(600, 600);
     }
     void make_shield() {
-        int shield_x = 0, shield_y = 0;
-        boolean made_random = false;
-        for (Wall w : Data.getInstance().walls) {
-            if (shield_x > 10 && shield_y > 150 && !(shield_x >= w.x - 10 && shield_x <= w.x + w.width + 10) && !(shield_y >= w.y - 10 && shield_y <= w.y + w.height + 10)) {
-                made_random = true;
-                break;
+        int shield_x = 50, shield_y = 150, ok = 0;
+        while (ok < Data.getInstance().walls.size()) {
+            shield_x = rand.nextInt(950) + 10; shield_y = rand.nextInt(800) + 150;
+            for (Wall w : Data.getInstance().walls) {
+                if (shield_x > 10 && shield_y > 150 && !(shield_x >= w.x - 10 && shield_x <= w.x + w.width + 10) && !(shield_y >= w.y - 10 && shield_y <= w.y + w.height + 10))
+                    ok++;
+                else {
+                    ok = 0;
+                    break;
+                }
             }
-            else
-                shield_x = rand.nextInt(950) + 10; shield_y = rand.nextInt(800) + 150;
         }
-
-        shield = made_random ? new Shield(shield_x, shield_y) : new Shield(600, 600);
+        shield = new Shield(shield_x, shield_y);
     }
 }

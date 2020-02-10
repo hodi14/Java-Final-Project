@@ -6,6 +6,7 @@ import javax.swing.*;
 public class Tank extends JFrame {
     double x, y, direction, av = 0.025, x_gun, y_gun;
     Color c;
+    boolean has_shield = false;
 
     Tank(int x, int y) {
         this.x = x;
@@ -82,10 +83,10 @@ public class Tank extends JFrame {
     boolean hit_life(Life l) {
         return Math.abs(this.x - l.x) <= 40 && Math.abs(this.y - l.y) <= 40;
     }
-    boolean hit_bullet(Life l) {
-        return Math.abs(this.x - l.x) <= 45 && Math.abs(this.x - l.x) >= 40 && Math.abs(this.y - l.y) <= 45 && Math.abs(this.y - l.y) >= 40;
+    boolean hit_bullet(Bullet_p bp) {
+        return Math.abs(this.x - bp.x) <= 40 && Math.abs(this.y - bp.y) <= 40;
     }
-    boolean hit_shield(Life l) {
-        return Math.abs(this.x - l.x) <= 45 && Math.abs(this.x - l.x) >= 40 && Math.abs(this.y - l.y) <= 45 && Math.abs(this.y - l.y) >= 40;
+    boolean hit_shield(Shield s) {
+        return Math.abs(this.x - s.x) <= 40 && Math.abs(this.y - s.y) <= 40;
     }
 }
