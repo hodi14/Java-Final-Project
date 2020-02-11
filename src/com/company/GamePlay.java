@@ -164,9 +164,9 @@ class GamePlay extends JFrame {
 
         if (life_shield_timer == 0) {
             life_shield_timer = 3000;
-            if (life_shield_rand % 2 == 1)
+            if (life_shield_rand % 2 == 1 && life != null)
                 life.on_map = false;
-            if (life_shield_rand % 2 == 0)
+            if (life_shield_rand % 2 == 0 && shield != null)
                 shield.on_map = false;
         }
         life_shield_timer--;
@@ -346,13 +346,13 @@ class GamePlay extends JFrame {
     private void show_bullet_1() {
         p1_bullet_s = Integer.toString(Data.getInstance().get_p1_bullet_n());
         p1_bullet.setText(p1_bullet_s);
-        p1_bullet.setBounds(170, 0, 100, 50);
+        p1_bullet.setBounds(160, 0, 100, 50);
         p1_bullet.setForeground(t1.c);
         p1_bullet.setFont(new Font(p1_bullet.getFont().getName(), p1_bullet.getFont().getStyle(), 40));
         this.add(p1_bullet);
 
         bullet1.setText("◙");
-        bullet1.setBounds(130, 1, 50, 50);
+        bullet1.setBounds(120, 1, 50, 50);
         bullet1.setForeground(t1.c);
         bullet1.setFont(new Font(bullet1.getFont().getName(), bullet1.getFont().getStyle(), 40));
         this.add(bullet1);
@@ -374,7 +374,7 @@ class GamePlay extends JFrame {
 
     private void show_shield_1() {
         shield1.setText("◆");
-        shield1.setBounds(230, 1, 50, 50);
+        shield1.setBounds(240, 1, 50, 50);
         shield1.setForeground(t1.c);
         shield1.setFont(new Font(shield1.getFont().getName(), shield1.getFont().getStyle(), 45));
         this.add(shield1);
