@@ -389,32 +389,73 @@ class GamePlay extends JFrame {
 
 
     private void make_bp() {
-        int bullet_x_1 = rand.nextInt(950) + 10, bullet_y_1 = rand.nextInt(800) + 150;
-        int bullet_x_2 = rand.nextInt(800) + 150, bullet_y_2 = rand.nextInt(800) + 150;
-        boolean made_random_1 = false, made_random_2 = false;
+        int bullet1_x_rand = rand.nextInt(950) + 10, bullet1_y_rand = rand.nextInt(800) + 150;
+        int bullet2_x_rand = rand.nextInt(950) + 10, bullet2_y_rand = rand.nextInt(800) + 150;
+        int bullet_x_1 = 50, bullet_y_1 = 150;
+        int bullet_x_2 = 500, bullet_y_2 = 900;
+        int bullet_x_3 = 900, bullet_y_3 = 650;
+        int bullet_x_4 = 950, bullet_y_4 = 950;
+        int bullet_x_5 = 500, bullet_y_5 = 650;
+        boolean made_random_1 = true, made_random_2 = true;
 
         for (Wall w : Data.getInstance().walls) {
-            if (bullet_x_1 > 10 && bullet_y_1 > 150 && !(bullet_x_1 >= w.x - 10 && bullet_x_1 <= w.x + w.width + 10) && !(bullet_y_1 >= w.y - 10 && bullet_y_1 <= w.y + w.height + 10))
-                made_random_1 = true;
-            if (bullet_x_2 > 10 && bullet_y_2 > 150 && !(bullet_x_2 >= w.x - 10 && bullet_x_2 <= w.x + w.width + 10) && !(bullet_y_2 >= w.y - 10 && bullet_y_2 <= w.y + w.height + 10) && !(bullet_x_1 == bullet_x_2 && bullet_y_1 == bullet_y_2))
-                made_random_2 = true;
+            if (!(bullet1_x_rand > 10 && bullet1_y_rand > 150 && !(bullet1_x_rand >= w.x - 10 && bullet1_x_rand <= w.x + w.width + 10) && !(bullet1_y_rand >= w.y - 10 && bullet1_y_rand <= w.y + w.height + 10)))
+                made_random_1 = false;
+            if (!(bullet2_x_rand > 10 && bullet2_y_rand > 150 && !(bullet2_x_rand >= w.x - 10 && bullet2_x_rand <= w.x + w.width + 10) && !(bullet2_y_rand >= w.y - 10 && bullet2_y_rand <= w.y + w.height + 10) && !(bullet1_x_rand == bullet2_x_rand && bullet1_y_rand == bullet2_y_rand)))
+                made_random_2 = false;
+            if(!(made_random_1) && !(made_random_2)) {
+                break;
+            }
         }
 
-        bp1 = made_random_1 ? new Bullet_p(bullet_x_1, bullet_y_1) : new Bullet_p(100, 150);
-        bp2 = made_random_2 ? new Bullet_p(bullet_x_2, bullet_y_2) : new Bullet_p(900, 900);
+        if (made_random_1) {
+            bp1 = new Bullet_p(bullet1_x_rand, bullet1_y_rand);
+        } else {
+            int random = rand.nextInt(2)+1;
+            switch (random) {
+                case 1:
+                    bp1 = new Bullet_p(bullet_x_1, bullet_y_1);
+                    break;
+                case 2:
+                    bp1 = new Bullet_p(bullet_x_4, bullet_y_4);
+                    break;
+                case 3:
+                    bp1 = new Bullet_p(bullet_x_5, bullet_y_5);
+                    break;
+            }
+        }
+
+        if (made_random_2) {
+            bp2 = new Bullet_p(bullet2_x_rand, bullet2_y_rand);
+        } else {
+            int random = rand.nextInt(2)+1;
+            switch (random) {
+                case 1:
+                    bp2 = new Bullet_p(bullet_x_2, bullet_y_2);
+                    break;
+                case 2:
+                    bp2 = new Bullet_p(bullet_x_3, bullet_y_3);
+                    break;
+                case 3:
+                    bp2 = new Bullet_p(bullet_x_5, bullet_y_5);
+                    break;
+            }
+        }
+
+
     }
-    void make_life() {
+    private void make_life() {
         int life_x_rand = rand.nextInt(950) + 10, life_y_rand = rand.nextInt(800) + 150;
         int life_x_1 = 50, life_y_1 = 150;
         int life_x_2 = 500, life_y_2 = 900;
         int life_x_3 = 900, life_y_3 = 650;
         int life_x_4 = 950, life_y_4 = 950;
         int life_x_5 = 500, life_y_5 = 650;
-        boolean made_random = false;
+        boolean made_random = true;
 
         for (Wall w : Data.getInstance().walls)
-            if (life_x_rand > 10 && life_y_rand > 150 && !(life_x_rand >= w.x - 10 && life_x_rand <= w.x + w.width + 10) && !(life_y_rand >= w.y - 10 && life_y_rand <= w.y + w.height + 10)) {
-                made_random = true;
+            if (!(life_x_rand > 10 && life_y_rand > 150 && !(life_x_rand >= w.x - 10 && life_x_rand <= w.x + w.width + 10) && !(life_y_rand >= w.y - 10 && life_y_rand <= w.y + w.height + 10))) {
+                made_random = false;
                 break;
             }
 
@@ -441,18 +482,18 @@ class GamePlay extends JFrame {
             }
         }
     }
-    void make_shield() {
+    private void make_shield() {
         int shield_x_rand = rand.nextInt(950) + 10, shield_y_rand = rand.nextInt(800) + 150;
         int shield_x_1 = 50, shield_y_1 = 150;
         int shield_x_2 = 500, shield_y_2 = 900;
         int shield_x_3 = 900, shield_y_3 = 650;
         int shield_x_4 = 950, shield_y_4 = 950;
         int shield_x_5 = 500, shield_y_5 = 650;
-        boolean made_random = false;
+        boolean made_random = true;
 
         for (Wall w : Data.getInstance().walls)
-            if (shield_x_rand > 10 && shield_y_rand > 150 && !(shield_x_rand >= w.x - 10 && shield_x_rand <= w.x + w.width + 10) && !(shield_y_rand >= w.y - 10 && shield_y_rand <= w.y + w.height + 10)) {
-                made_random = true;
+            if (!(shield_x_rand > 10 && shield_y_rand > 150 && !(shield_x_rand >= w.x - 10 && shield_x_rand <= w.x + w.width + 10) && !(shield_y_rand >= w.y - 10 && shield_y_rand <= w.y + w.height + 10))) {
+                made_random = false;
                 break;
             }
 
