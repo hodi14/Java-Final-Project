@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Tank extends JFrame {
-    double x, y, direction, av = 0.025, x_gun, y_gun;
+    double x, y, direction, av = 0.02, x_gun, y_gun;
     Color c;
     boolean has_shield = false;
 
@@ -50,43 +50,25 @@ public class Tank extends JFrame {
             return false;
         if ((this.y >= 960 && this.direction > 0 && this.direction < Math.PI / 2) || (this.y >= 960 && this.direction > 3 * Math.PI / 2 && this.direction < 2 * Math.PI))
             return false;
-        if ((this.y >= 960 && this.direction < 0 && this.direction > -Math.PI / 2) || (this.y >= 960 && this.direction > -2 * Math.PI && this.direction < -3 * Math.PI / 2))
-            return false;
-        return true;
+        return (!(this.y >= 960) || !(this.direction < 0) || !(this.direction > -Math.PI / 2)) && (!(this.y >= 960) || !(this.direction > -2 * Math.PI) || !(this.direction < -3 * Math.PI / 2));
     }
 
     boolean hit_wall(Wall w) {
         if (w.y - this.y <= 29 && w.y - this.y >= 25 && this.x >= w.x - 30 && this.x <= w.x + w.width + 30) {
-            if ((this.direction >= 0 && this.direction <= Math.PI / 2) || (this.direction >= 3 * Math.PI / 2 && this.direction <= 2 * Math.PI)) {
-                return true;
-            }
-            if ((this.direction <= 0 && this.direction >= -Math.PI / 2) || (this.direction >= -2 * Math.PI && this.direction <= -3 * Math.PI / 2)) {
-                return true;
-            }
+            if ((this.direction >= 0 && this.direction <= Math.PI / 2) || (this.direction >= 3 * Math.PI / 2 && this.direction <= 2 * Math.PI)) { return true; }
+            return ((this.direction <= 0 && this.direction >= -Math.PI / 2) || (this.direction >= -2 * Math.PI && this.direction <= -3 * Math.PI / 2));
         }
         if (-w.y - w.height + this.y <= 29 && -w.y - w.height + this.y >= 25 && this.x >= w.x - 30 && this.x <= w.x + w.width + 30)
-            if ((this.direction >= Math.PI / 2 && this.direction <= 3 * Math.PI / 2) || (this.direction >= -3 * Math.PI / 2 && this.direction <= -Math.PI / 2)) {
-                return true;
-            }
+            return ((this.direction >= Math.PI / 2 && this.direction <= 3 * Math.PI / 2) || (this.direction >= -3 * Math.PI / 2 && this.direction <= -Math.PI / 2));
         if (this.x - w.x - w.width <= 29 && this.x - w.x - w.width >= 25 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
-            if ((this.direction >= Math.PI && this.direction <= 2 * Math.PI) || (this.direction >= -Math.PI && this.direction <= 0)) {
-                return true;
-            }
+            return (this.direction >= Math.PI && this.direction <= 2 * Math.PI || (this.direction >= -Math.PI && this.direction <= 0));
         if (w.x - this.x <= 29 && w.x - this.x >= 25 && this.y >= w.y - 30 && this.y <= w.y + w.height + 30)
-            if ((this.direction >= 0 && this.direction <= Math.PI) || (this.direction >= -2 * Math.PI && this.direction <= -Math.PI)) {
-                return true;
-            }
+            return (this.direction >= 0 && this.direction <= Math.PI) || (this.direction >= -2 * Math.PI && this.direction <= -Math.PI);
 
         return false;
     }
 
-    boolean hit_life(Life l) {
-        return Math.abs(this.x - l.x) <= 40 && Math.abs(this.y - l.y) <= 40;
-    }
-    boolean hit_bullet(Bullet_p bp) {
-        return Math.abs(this.x - bp.x) <= 40 && Math.abs(this.y - bp.y) <= 40;
-    }
-    boolean hit_shield(Shield s) {
-        return Math.abs(this.x - s.x) <= 40 && Math.abs(this.y - s.y) <= 40;
-    }
+    boolean hit_life(Life l) { return Math.abs(this.x - l.x) <= 40 && Math.abs(this.y - l.y) <= 40; }
+    boolean hit_bullet(Bullet_p bp) { return Math.abs(this.x - bp.x) <= 40 && Math.abs(this.y - bp.y) <= 40; }
+    boolean hit_shield(Shield s) { return Math.abs(this.x - s.x) <= 40 && Math.abs(this.y - s.y) <= 40; }
 }

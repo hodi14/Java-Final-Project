@@ -2,11 +2,7 @@ package com.company;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 class Map extends Board {

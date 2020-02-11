@@ -1,8 +1,5 @@
 package com.company;
 
-import javax.swing.*;
-import java.awt.*;
-
 class PowerUp {
     int x, y, age;
     boolean on_map;
