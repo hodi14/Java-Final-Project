@@ -4,11 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 
 class Sound {
 
@@ -23,8 +19,11 @@ class Sound {
         // create AudioInputStream object
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 
+        AudioFormat format = audioInputStream.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+
         // create clip reference
-        clip = AudioSystem.getClip();
+        clip = (Clip) AudioSystem.getLine(info);
 
         // open audioInputStream to the clip
         clip.open(audioInputStream);
