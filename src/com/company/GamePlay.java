@@ -21,21 +21,20 @@ class GamePlay extends JFrame {
     private int bullet_timer = 2000;
     private int life_shield_timer = 3000, life_shield_rand;
 
-    private boolean right_1;
-    private boolean left_1;
-    private boolean right_2;
-    private boolean left_2;
-    private boolean move_1;
-    private boolean move_2;
+    private boolean right_1, left_1, move_1;
+    private boolean right_2, left_2, move_2;
+    private boolean paused = false;
 
     private Random rand = new Random();
 
     private JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
     private JLabel p1_bullet = new JLabel(), p2_bullet = new JLabel(), bullet1 = new JLabel(), bullet2 = new JLabel();
     private JLabel shield1 = new JLabel(), shield2 = new JLabel();
+    private JLabel paused_lbl = new JLabel();
+
+    private Timer game_time = new Timer(5, actionEvent -> repaint());
 
     GamePlay() {
-
         switch (Data.getInstance().get_color_1().toString()) {
             case "Blue":
                 t1.c = Color.BLUE;
@@ -82,7 +81,14 @@ class GamePlay extends JFrame {
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    System.out.println("pause");
+                    paused = !paused;
+                    if (paused) {
+                        paused_lbl.setText("PAUSED");
+                        game_time.stop();
+                    }
+                    else {
+                        paused_lbl.setText("");
+                        game_time.start(); }
                 }
                 e.consume();
             }
@@ -149,12 +155,15 @@ class GamePlay extends JFrame {
         this.getContentPane().setBackground(Color.BLACK);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        paused_lbl.setBounds(380, 2, 240, 50);
+        paused_lbl.setForeground(Color.LIGHT_GRAY);
+        paused_lbl.setFont(new Font(paused_lbl.getFont().getName(), paused_lbl.getFont().getStyle(), 50));
+        this.add(paused_lbl);
+
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
-        new Timer(
-                5,
-                actionEvent -> repaint()
-        ).start();
+        if (!paused) { game_time.start(); }
+        else { game_time.stop(); }
     }
 
     public void paint(Graphics g) {
@@ -374,7 +383,7 @@ class GamePlay extends JFrame {
         this.add(p1_bullet);
 
         bullet1.setText("◙");
-        bullet1.setBounds(120, 1, 50, 50);
+        bullet1.setBounds(125, 1, 50, 50);
         bullet1.setForeground(t1.c);
         bullet1.setFont(new Font(bullet1.getFont().getName(), bullet1.getFont().getStyle(), 40));
         this.add(bullet1);
@@ -382,13 +391,13 @@ class GamePlay extends JFrame {
     private void show_bullet_2() {
         String p2_bullet_s = Integer.toString(Data.getInstance().get_p2_bullet_n());
         p2_bullet.setText(p2_bullet_s);
-        p2_bullet.setBounds(820, 0, 100, 50);
+        p2_bullet.setBounds(805, 0, 100, 50);
         p2_bullet.setForeground(t2.c);
         p2_bullet.setFont(new Font(p2_bullet.getFont().getName(), p2_bullet.getFont().getStyle(), 40));
         this.add(p2_bullet);
 
         bullet2.setText("◙");
-        bullet2.setBounds(782, 1, 50, 50);
+        bullet2.setBounds(767, 1, 50, 50);
         bullet2.setForeground(t2.c);
         bullet2.setFont(new Font(bullet2.getFont().getName(), bullet2.getFont().getStyle(), 40));
         this.add(bullet2);
@@ -403,12 +412,11 @@ class GamePlay extends JFrame {
     }
     private void show_shield_2() {
         shield2.setText("◆");
-        shield2.setBounds(712, 1, 50, 50);
+        shield2.setBounds(702, 1, 50, 50);
         shield2.setForeground(t2.c);
         shield2.setFont(new Font(shield2.getFont().getName(), shield2.getFont().getStyle(), 45));
         this.add(shield2);
     }
-
 
     private void make_bp() {
         int bullet1_x_rand = rand.nextInt(950) + 10, bullet1_y_rand = rand.nextInt(800) + 150;
@@ -548,13 +556,10 @@ class GamePlay extends JFrame {
     private void hitTankSound() {
         try {
             Sound.filePath = "./resource/Sounds/hitTankSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
@@ -563,13 +568,10 @@ class GamePlay extends JFrame {
     private void hitWallSound() {
         try {
             Sound.filePath = "./resource/Sounds/hitWallSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
@@ -578,14 +580,11 @@ class GamePlay extends JFrame {
     private void ShotSound() {
         try {
             Sound.filePath = "./resource/Sounds/ShotSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
 
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
@@ -594,14 +593,10 @@ class GamePlay extends JFrame {
     private void ReloadSound() {
         try {
             Sound.filePath = "./resource/Sounds/ReloadSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
-
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
@@ -610,14 +605,10 @@ class GamePlay extends JFrame {
     private void ShieldSound() {
         try {
             Sound.filePath = "./resource/Sounds/ShieldSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
-
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
@@ -626,14 +617,11 @@ class GamePlay extends JFrame {
     private void LifeSound() {
         try {
             Sound.filePath = "./resource/Sounds/LifeSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
 
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
@@ -642,14 +630,10 @@ class GamePlay extends JFrame {
     private void WiningSound() {
         try {
             Sound.filePath = "./resource/Sounds/WiningSound.wav";
-            Sound audioPlayer =
-                    new Sound();
-
+            Sound audioPlayer = new Sound();
             audioPlayer.play();
-
         }
         catch (Exception ex)  {
-
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }

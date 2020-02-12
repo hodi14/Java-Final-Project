@@ -86,7 +86,6 @@ class Map extends Board {
         board.add(map_number);
     }
 
-
     private void start(ActionEvent e) {
         char mc = (Objects.requireNonNull(map_number.getSelectedItem()).toString()).charAt(4);
         int mi = Character.getNumericValue(mc);

@@ -25,7 +25,6 @@ class Data {
     private tank_color p1_color, p2_color;
     ArrayList<Wall> walls;
 
-
     void set_name_1(String n1) {
         p1_name = n1;
     }

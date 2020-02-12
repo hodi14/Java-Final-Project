@@ -69,6 +69,5 @@ class Settings extends Board {
                bullet_nt.setText("*");
                bullet_pt.setText("*");
         }
-
     }
 }
