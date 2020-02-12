@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 
-public class Bullet extends JFrame {
+public class Bullet {
     double x, y, direction;
     Color c;
     Boolean on_map;
@@ -18,7 +18,6 @@ public class Bullet extends JFrame {
     }
 
     public void paint(Graphics g) {
-        super.paint(g);
         g.setColor(this.c);
         g.fillOval((int)this.x, (int)this.y, 10, 10);
     }

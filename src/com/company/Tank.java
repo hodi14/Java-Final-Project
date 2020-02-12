@@ -3,7 +3,7 @@ package com.company;
 import java.awt.*;
 import javax.swing.*;
 
-public class Tank extends JFrame {
+public class Tank  {
     double x, y, direction, av = 0.02, x_gun, y_gun;
     Color c;
     boolean has_shield = false;
@@ -16,7 +16,6 @@ public class Tank extends JFrame {
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(c);
-        super.paint(g2d);
         g2d.setStroke(new BasicStroke(8));
 
         x_gun = Math.round(this.x + 35 * Math.sin(this.direction));
