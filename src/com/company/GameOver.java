@@ -19,9 +19,9 @@ class GameOver extends Board {
         board.add(won);
 
         JLabel cup_img = null;
-        if (c == Color.GREEN) { cup_img = new JLabel(new ImageIcon(".\\resource\\green_win.png")); }
-        if (c == Color.RED) { cup_img = new JLabel(new ImageIcon(".\\resource\\red_win.png")); }
-        if (c == Color.BLUE) { cup_img = new JLabel(new ImageIcon(".\\resource\\blue_win.png")); }
+        if (c == Color.GREEN) { cup_img = new JLabel(new ImageIcon(".\\resource\\Images\\green_win.png")); }
+        if (c == Color.RED) { cup_img = new JLabel(new ImageIcon(".\\resource\\Images\\red_win.png")); }
+        if (c == Color.BLUE) { cup_img = new JLabel(new ImageIcon(".\\resource\\Images\\blue_win.png")); }
 
         assert cup_img != null;
         cup_img.setBounds(520, 100, 450, 500);

@@ -6,7 +6,7 @@ import javax.swing.*;
 
 class Menu extends Board {
     Menu() {
-        JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\logo.png"));
+        JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\Images\\logo.png"));
         logo_img.setBounds(110, 0, 800, 400);
         board.add(logo_img);
         JLabel name = new JLabel("  TANKS GAME");

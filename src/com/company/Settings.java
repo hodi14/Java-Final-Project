@@ -10,7 +10,7 @@ class Settings extends Board {
     private JTextField bullet_nt = new JTextField("20");
 
     Settings() {
-        JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\logo.png"));
+        JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\Images\\logo.png"));
         logo_img.setBounds(110, 0, 800, 400);
         board.add(logo_img);
         JLabel name = new JLabel("  TANKS GAME");
