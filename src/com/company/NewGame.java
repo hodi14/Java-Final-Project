@@ -12,7 +12,7 @@ class NewGame extends Board{
     private JComboBox<Data.tank_color> p2_color_c = new JComboBox<>(Data.tank_color.values());
 
     NewGame() {
-        JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\Images\\logo.png"));
+        JLabel logo_img = new JLabel(new ImageIcon("./resource/Images/logo.png"));
         logo_img.setBounds(110, 0, 800, 400);
         board.add(logo_img);
         JLabel name = new JLabel("  TANKS GAME");
