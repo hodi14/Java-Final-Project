@@ -14,11 +14,6 @@ class Sound {
 
     // to store current position
     private Clip clip;
-
-    // current status of clip
-    private String status;
-
-    private AudioInputStream audioInputStream;
     static String filePath;
 
     // constructor to initialize streams and clip
@@ -26,8 +21,7 @@ class Sound {
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
         // create AudioInputStream object
-        audioInputStream =
-                AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 
         // create clip reference
         clip = AudioSystem.getClip();
@@ -43,7 +37,6 @@ class Sound {
         //start the clip
         clip.start();
 
-        status = "play";
     }
 
 

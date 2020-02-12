@@ -21,11 +21,15 @@ class GamePlay extends JFrame {
     private int bullet_timer = 2000;
     private int life_shield_timer = 3000, life_shield_rand;
 
-    private boolean right_1, left_1, right_2, left_2, move_1, move_2, pass_wall_1, pass_wall_2;
+    private boolean right_1;
+    private boolean left_1;
+    private boolean right_2;
+    private boolean left_2;
+    private boolean move_1;
+    private boolean move_2;
 
     private Random rand = new Random();
 
-    private String p1_life_s, p2_life_s, p1_bullet_s, p2_bullet_s;
     private JLabel p1_life = new JLabel(), p2_life = new JLabel(), heart1 = new JLabel(), heart2 = new JLabel();
     private JLabel p1_bullet = new JLabel(), p2_bullet = new JLabel(), bullet1 = new JLabel(), bullet2 = new JLabel();
     private JLabel shield1 = new JLabel(), shield2 = new JLabel();
@@ -220,7 +224,8 @@ class GamePlay extends JFrame {
             this.dispose();
         }
 
-        pass_wall_1 = true; pass_wall_2 = true;
+        boolean pass_wall_1 = true;
+        boolean pass_wall_2 = true;
         for (Wall w: Data.getInstance().walls) {
             w.paint(g);
 
@@ -332,7 +337,7 @@ class GamePlay extends JFrame {
     }
 
     private void show_life_1() {
-        p1_life_s = Integer.toString(Data.getInstance().get_life_1());
+        String p1_life_s = Integer.toString(Data.getInstance().get_life_1());
         p1_life.setText(p1_life_s);
         p1_life.setBounds(32, 0, 100, 50);
         p1_life.setForeground(t1.c);
@@ -346,7 +351,7 @@ class GamePlay extends JFrame {
         this.add(heart1);
     }
     private void show_life_2() {
-        p2_life_s = Integer.toString(Data.getInstance().get_life_2());
+        String p2_life_s = Integer.toString(Data.getInstance().get_life_2());
         p2_life.setText(p2_life_s);
         p2_life.setBounds(915, 0, 100, 50);
         p2_life.setForeground(t2.c);
@@ -361,7 +366,7 @@ class GamePlay extends JFrame {
     }
 
     private void show_bullet_1() {
-        p1_bullet_s = Integer.toString(Data.getInstance().get_p1_bullet_n());
+        String p1_bullet_s = Integer.toString(Data.getInstance().get_p1_bullet_n());
         p1_bullet.setText(p1_bullet_s);
         p1_bullet.setBounds(160, 0, 100, 50);
         p1_bullet.setForeground(t1.c);
@@ -375,7 +380,7 @@ class GamePlay extends JFrame {
         this.add(bullet1);
     }
     private void show_bullet_2() {
-        p2_bullet_s = Integer.toString(Data.getInstance().get_p2_bullet_n());
+        String p2_bullet_s = Integer.toString(Data.getInstance().get_p2_bullet_n());
         p2_bullet.setText(p2_bullet_s);
         p2_bullet.setBounds(820, 0, 100, 50);
         p2_bullet.setForeground(t2.c);
