@@ -7,7 +7,7 @@ import javax.swing.*;
 
 class Map extends Board {
     private String[] map_numbers = {"Map 1", "Map 2", "Map 3", "Map 4", "Map 5", "Map 6"};
-    private JComboBox map_number = new JComboBox(map_numbers);
+    private JComboBox<String> map_number = new JComboBox<>(map_numbers);
 
     Map() {
         JLabel map1_lb = new JLabel("1");

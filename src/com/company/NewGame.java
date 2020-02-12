@@ -8,8 +8,8 @@ class NewGame extends Board{
     private JTextField p1_name_t = new JTextField("Player 1");
     private JTextField p2_name_t = new JTextField("Player 2");
 
-    private JComboBox p1_color_c = new JComboBox(Data.tank_color.values());
-    private JComboBox p2_color_c = new JComboBox(Data.tank_color.values());
+    private JComboBox<Data.tank_color> p1_color_c = new JComboBox<>(Data.tank_color.values());
+    private JComboBox<Data.tank_color> p2_color_c = new JComboBox<>(Data.tank_color.values());
 
     NewGame() {
         JLabel logo_img = new JLabel(new ImageIcon(".\\resource\\Images\\logo.png"));
