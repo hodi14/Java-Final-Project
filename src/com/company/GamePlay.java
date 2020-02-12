@@ -555,7 +555,7 @@ class GamePlay extends JFrame {
 
     private void hitTankSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\hitTankSound.wav";
+            Sound.filePath = "./resource/Sounds/hitTankSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
         }
@@ -567,7 +567,7 @@ class GamePlay extends JFrame {
 
     private void hitWallSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\hitWallSound.wav";
+            Sound.filePath = "./resource/Sounds/hitWallSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
         }
@@ -579,7 +579,7 @@ class GamePlay extends JFrame {
 
     private void ShotSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\ShotSound.wav";
+            Sound.filePath = "./resource/Sounds/ShotSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
 
@@ -592,7 +592,7 @@ class GamePlay extends JFrame {
 
     private void ReloadSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\ReloadSound.wav";
+            Sound.filePath = "./resource/Sounds/ReloadSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
         }
@@ -604,7 +604,7 @@ class GamePlay extends JFrame {
 
     private void ShieldSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\ShieldSound.wav";
+            Sound.filePath = "./resource/Sounds/ShieldSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
         }
@@ -616,7 +616,7 @@ class GamePlay extends JFrame {
 
     private void LifeSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\LifeSound.wav";
+            Sound.filePath = "./resource/Sounds/LifeSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
 
@@ -629,7 +629,7 @@ class GamePlay extends JFrame {
 
     private void WiningSound() {
         try {
-            Sound.filePath = ".\\resource\\Sounds\\WiningSound.wav";
+            Sound.filePath = "./resource/Sounds/WiningSound.wav";
             Sound audioPlayer = new Sound();
             audioPlayer.play();
         }

@@ -15,7 +15,7 @@ class Map extends Board {
         map1_lb.setForeground(Color.LIGHT_GRAY);
         map1_lb.setFont(new Font(map1_lb.getFont().getName(), map1_lb.getFont().getStyle(), 30));
         board.add(map1_lb);
-        JLabel map1_img = new JLabel(new ImageIcon(".\\resource\\Images\\map1.png"));
+        JLabel map1_img = new JLabel(new ImageIcon("./resource/Images/map1.png"));
         map1_img.setBounds(100, 50, 200, 200);
         board.add(map1_img);
 
@@ -24,7 +24,7 @@ class Map extends Board {
         map2_lb.setForeground(Color.LIGHT_GRAY);
         map2_lb.setFont(new Font(map2_lb.getFont().getName(), map2_lb.getFont().getStyle(), 30));
         board.add(map2_lb);
-        JLabel map2_img = new JLabel(new ImageIcon(".\\resource\\Images\\map2.png"));
+        JLabel map2_img = new JLabel(new ImageIcon("./resource/Images/map2.png"));
         map2_img.setBounds(400, 50, 200, 200);
         board.add(map2_img);
 
@@ -33,7 +33,7 @@ class Map extends Board {
         map3_lb.setForeground(Color.LIGHT_GRAY);
         map3_lb.setFont(new Font(map3_lb.getFont().getName(), map3_lb.getFont().getStyle(), 30));
         board.add(map3_lb);
-        JLabel map3_img = new JLabel(new ImageIcon(".\\resource\\Images\\map3.png"));
+        JLabel map3_img = new JLabel(new ImageIcon("./resource/Images/map3.png"));
         map3_img.setBounds(700, 50, 200, 200);
         board.add(map3_img);
 
@@ -42,7 +42,7 @@ class Map extends Board {
         map4_lb.setForeground(Color.LIGHT_GRAY);
         map4_lb.setFont(new Font(map4_lb.getFont().getName(), map4_lb.getFont().getStyle(), 30));
         board.add(map4_lb);
-        JLabel map4_img = new JLabel(new ImageIcon(".\\resource\\Images\\map4.png"));
+        JLabel map4_img = new JLabel(new ImageIcon("./resource/Images/map4.png"));
         map4_img.setBounds(100, 300, 200, 200);
         board.add(map4_img);
 
@@ -51,7 +51,7 @@ class Map extends Board {
         map5_lb.setForeground(Color.LIGHT_GRAY);
         map5_lb.setFont(new Font(map5_lb.getFont().getName(), map5_lb.getFont().getStyle(), 30));
         board.add(map5_lb);
-        JLabel map5_img = new JLabel(new ImageIcon(".\\resource\\Images\\map5.png"));
+        JLabel map5_img = new JLabel(new ImageIcon("./resource/Images/map5.png"));
         map5_img.setBounds(400, 300, 200, 200);
         board.add(map5_img);
 
@@ -60,7 +60,7 @@ class Map extends Board {
         map6_lb.setForeground(Color.LIGHT_GRAY);
         map6_lb.setFont(new Font(map6_lb.getFont().getName(), map6_lb.getFont().getStyle(), 30));
         board.add(map6_lb);
-        JLabel map6_img = new JLabel(new ImageIcon(".\\resource\\Images\\map6.png"));
+        JLabel map6_img = new JLabel(new ImageIcon("./resource/Images/map6.png"));
         map6_img.setBounds(700, 300, 200, 200);
         board.add(map6_img);
 

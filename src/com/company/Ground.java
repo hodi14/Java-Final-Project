@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import javax.swing.*;
 
-class Ground extends JFrame{
+class Ground {
 
     private static Ground me;
     static Ground getInstance() {

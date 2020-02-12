@@ -3,11 +3,8 @@ package com.company;
 import java.io.File;
 import java.io.IOException;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+
+import javax.sound.sampled.*;
 
 class Sound {
     private Clip clip;
@@ -18,7 +15,9 @@ class Sound {
             IOException, LineUnavailableException {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 
-        clip = AudioSystem.getClip();
+        AudioFormat format = audioInputStream.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        clip = (Clip) AudioSystem.getLine(info);
         clip.open(audioInputStream);
     }
 
