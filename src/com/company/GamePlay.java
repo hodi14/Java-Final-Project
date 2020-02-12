@@ -31,6 +31,7 @@ class GamePlay extends JFrame {
     private JLabel shield1 = new JLabel(), shield2 = new JLabel();
 
     GamePlay() {
+
         switch (Data.getInstance().get_color_1().toString()) {
             case "Blue":
                 t1.c = Color.BLUE;
@@ -72,6 +73,7 @@ class GamePlay extends JFrame {
                         b.c = t1.c;
                         bullets.add(b);
                         Data.getInstance().p1_shot();
+                        ShotSound();
                     }
                 }
 
@@ -114,6 +116,7 @@ class GamePlay extends JFrame {
                         b.c = t2.c;
                         bullets.add(b);
                         Data.getInstance().p2_shot();
+                        ShotSound();
                     }
                 }
                 e.consume();
@@ -207,10 +210,12 @@ class GamePlay extends JFrame {
 
 
         if (Data.getInstance().get_life_1() <= 0) {
+            WiningSound();
             new GameOver(Data.getInstance().get_name_2(), t2.c).show();
             this.dispose();
         }
         if (Data.getInstance().get_life_2() <= 0) {
+            WiningSound();
             new GameOver(Data.getInstance().get_name_1(), t1.c).show();
             this.dispose();
         }
@@ -235,9 +240,12 @@ class GamePlay extends JFrame {
         if (Data.getInstance().get_life_2() > 0) { t2.paint(g); }
 
         for (Bullet b: bullets) {
+
+
             if (b.hit_tank(t1) && b.c == t2.c && b.on_map && !t1.has_shield) {
                 Data.getInstance().p1_got_shot();
                 b.on_map = false;
+                hitTankSound();
             }
             if (b.hit_tank(t1) && b.c == t2.c && b.on_map && t1.has_shield) {
                 b.on_map = false;
@@ -246,6 +254,7 @@ class GamePlay extends JFrame {
             if (b.hit_tank(t2) && b.c == t1.c && b.on_map && !t2.has_shield) {
                 Data.getInstance().p2_got_shot();
                 b.on_map = false;
+                hitTankSound();
             }
             if (b.hit_tank(t2) && b.c == t1.c && b.on_map && t2.has_shield) {
                 b.on_map = false;
@@ -255,9 +264,11 @@ class GamePlay extends JFrame {
                 switch (b.hit_wall(w)) {
                     case Horizontal:
                         b.direction = Math.PI - b.direction;
+                        hitWallSound();
                         break;
                     case Vertical:
                         b.direction = -b.direction;
+                        hitWallSound();
                         break;
                 }
             }
@@ -271,21 +282,25 @@ class GamePlay extends JFrame {
         if (life_shield_rand % 2 == 1 && life != null && life.on_map) {
             if (t1.hit_life(life)) {
                 Data.getInstance().get_life_p1();
+                LifeSound();
                 life.on_map = false;
             }
             if (t2.hit_life(life)) {
                 Data.getInstance().get_life_p2();
+                LifeSound();
                 life.on_map = false;
             }
         }
         if (life_shield_rand % 2 == 0 && shield != null && shield.on_map) {
             if (t1.hit_shield(shield)) {
                 t1.has_shield = true;
+                ShieldSound();
                 shield.time = 1000;
                 shield.on_map = false;
             }
             if (t2.hit_shield(shield)) {
                 t2.has_shield = true;
+                ShieldSound();
                 shield.time = 1000;
                 shield.on_map = false;
             }
@@ -293,10 +308,12 @@ class GamePlay extends JFrame {
 
         if (t1.hit_bullet(bp1) && bp1.on_map) {
             Data.getInstance().get_bullet_1();
+            ReloadSound();
             bp1.on_map = false;
         }
         if (t2.hit_bullet(bp2) && bp2.on_map) {
             Data.getInstance().get_bullet_2();
+            ReloadSound();
             bp2.on_map = false;
         }
 
@@ -522,4 +539,115 @@ class GamePlay extends JFrame {
         }
 
     }
+
+    private void hitTankSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
+    private void hitWallSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire2.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
+    private void ShotSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire3.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
+    private void ReloadSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire4.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
+    private void ShieldSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire5.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
+    private void LifeSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire6.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
+    private void WiningSound() {
+        try {
+            Sound.filePath = ".\\resource\\fire7.wav";
+            Sound audioPlayer =
+                    new Sound();
+
+            audioPlayer.play();
+
+        }
+        catch (Exception ex)  {
+
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+
 }
