@@ -32,6 +32,8 @@ class GamePlay extends JFrame {
     private JLabel shield1 = new JLabel(), shield2 = new JLabel();
     private JLabel paused_lbl = new JLabel();
 
+    private Timer game_time = new Timer(5, actionEvent -> repaint());
+
     GamePlay() {
         switch (Data.getInstance().get_color_1().toString()) {
             case "Blue":
@@ -78,7 +80,17 @@ class GamePlay extends JFrame {
                     }
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { paused = !paused; System.out.println(paused);}
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    paused = !paused;
+                    if (paused) {
+                        show_paused();
+                        game_time.stop();
+                    }
+                    else {
+                        paused_lbl.setText("");
+                        game_time.start();
+                    }
+                }
                 e.consume();
             }
             public void keyTyped(KeyEvent e) {}
@@ -147,7 +159,6 @@ class GamePlay extends JFrame {
 
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
-        Timer game_time = new Timer(5, actionEvent -> repaint());
         if (!paused) { game_time.start(); }
         else { game_time.stop(); }
     }
@@ -327,9 +338,6 @@ class GamePlay extends JFrame {
 
         show_bullet_1();
         show_bullet_2();
-
-        if (paused) { show_paused(); }
-        else { paused_lbl.setText(""); }
 
         Toolkit.getDefaultToolkit().sync();
     }
