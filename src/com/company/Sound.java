@@ -10,19 +10,19 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-public class Sound {
+class Sound {
 
     // to store current position
-    Clip clip;
+    private Clip clip;
 
     // current status of clip
-    String status;
+    private String status;
 
-    AudioInputStream audioInputStream;
+    private AudioInputStream audioInputStream;
     static String filePath;
 
     // constructor to initialize streams and clip
-    public Sound()
+    Sound()
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
         // create AudioInputStream object
@@ -38,7 +38,7 @@ public class Sound {
     }
 
     // Method to play the audio
-    public void play()
+    void play()
     {
         //start the clip
         clip.start();

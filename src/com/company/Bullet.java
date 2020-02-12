@@ -8,7 +8,7 @@ public class Bullet extends JFrame {
     double x, y, direction;
     Color c;
     Boolean on_map;
-    int age = 200;
+    private int age = 200;
 
     Bullet(int x, int y, double d) {
         this.x = x;

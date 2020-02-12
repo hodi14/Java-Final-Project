@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
-public class GameOver extends Board {
+class GameOver extends Board {
     GameOver(String winner_s, Color c) {
         JLabel winner_j = new JLabel(winner_s);
         winner_j.setBounds(20, 200, 500, 200);
@@ -23,6 +23,7 @@ public class GameOver extends Board {
         if (c == Color.RED) { cup_img = new JLabel(new ImageIcon(".\\resource\\red_win.png")); }
         if (c == Color.BLUE) { cup_img = new JLabel(new ImageIcon(".\\resource\\blue_win.png")); }
 
+        assert cup_img != null;
         cup_img.setBounds(520, 100, 450, 500);
         board.add(cup_img);
 

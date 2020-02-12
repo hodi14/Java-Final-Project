@@ -1,12 +1,11 @@
 package com.company;
 
-import javax.swing.*;
 import java.awt.*;
 
 class Bullet_p extends PowerUp {
     Bullet_p(int x, int y) { super(x, y); }
 
-    public void paint(Graphics g, Color c) {
+    void paint(Graphics g, Color c) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(c);
         g2d.drawOval(this.x , this.y , 30, 30);

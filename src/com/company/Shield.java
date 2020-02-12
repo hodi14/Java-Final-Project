@@ -6,7 +6,7 @@ class Shield extends PowerUp {
     int time;
     Shield(int x, int y) { super(x, y); }
 
-    public void paint(Graphics g) {
+    void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.YELLOW);
         g2d.drawOval(this.x , this.y , 30, 30);

@@ -15,5 +15,6 @@ class Board{
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void show() { board.setVisible(true); }
+    void show() { board.setVisible(true); }
+
 }
