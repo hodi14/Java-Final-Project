@@ -83,13 +83,12 @@ class GamePlay extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     paused = !paused;
                     if (paused) {
-                        show_paused();
+                        paused_lbl.setText("PAUSED");
                         game_time.stop();
                     }
                     else {
                         paused_lbl.setText("");
-                        game_time.start();
-                    }
+                        game_time.start(); }
                 }
                 e.consume();
             }
@@ -105,7 +104,6 @@ class GamePlay extends JFrame {
                 if (c == 'd' || c == 'D') {
                     right_1 = false;
                 }
-                //if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { paused = !paused; }
                 e.consume();
             }
         };
@@ -156,6 +154,11 @@ class GamePlay extends JFrame {
         this.setResizable(false);
         this.getContentPane().setBackground(Color.BLACK);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        paused_lbl.setBounds(380, 2, 240, 50);
+        paused_lbl.setForeground(Color.LIGHT_GRAY);
+        paused_lbl.setFont(new Font(paused_lbl.getFont().getName(), paused_lbl.getFont().getStyle(), 50));
+        this.add(paused_lbl);
 
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
 
@@ -414,15 +417,6 @@ class GamePlay extends JFrame {
         shield2.setFont(new Font(shield2.getFont().getName(), shield2.getFont().getStyle(), 45));
         this.add(shield2);
     }
-
-    private void show_paused() {
-        paused_lbl.setText("PAUSED");
-        paused_lbl.setBounds(380, 2, 240, 50);
-        paused_lbl.setForeground(Color.LIGHT_GRAY);
-        paused_lbl.setFont(new Font(paused_lbl.getFont().getName(), paused_lbl.getFont().getStyle(), 50));
-        this.add(paused_lbl);
-    }
-
 
     private void make_bp() {
         int bullet1_x_rand = rand.nextInt(950) + 10, bullet1_y_rand = rand.nextInt(800) + 150;
