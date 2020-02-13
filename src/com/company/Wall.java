@@ -1,6 +1,5 @@
 package com.company;
 
-import javax.swing.*;
 import java.awt.*;
 
 class Wall {
@@ -13,7 +12,7 @@ class Wall {
         this.height = h;
     }
 
-    public void paint(Graphics g) {
+    void paint(Graphics g) {
         g.setColor(Color.GRAY);
         g.fillRect(this.x , this.y , this.width, this.height);
     }

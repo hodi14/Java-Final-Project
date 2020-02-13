@@ -2,9 +2,9 @@ package com.company;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import javax.swing.JFrame;
 
-public class Bullet {
+
+class Bullet {
     double x, y, direction;
     Color c;
     Boolean on_map;
@@ -17,7 +17,7 @@ public class Bullet {
         this.on_map = true;
     }
 
-    public void paint(Graphics g) {
+    void paint(Graphics g) {
         g.setColor(this.c);
         g.fillOval((int)this.x, (int)this.y, 10, 10);
     }

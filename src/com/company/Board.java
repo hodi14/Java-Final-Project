@@ -16,4 +16,5 @@ class Board{
     }
 
     void show() { board.setVisible(true); }
+
 }

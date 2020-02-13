@@ -1,9 +1,8 @@
 package com.company;
 
 import java.awt.*;
-import javax.swing.*;
 
-public class Tank  {
+class Tank  {
     double x, y, direction, av = 0.02, x_gun, y_gun;
     Color c;
     boolean has_shield = false;
@@ -13,7 +12,7 @@ public class Tank  {
         this.y = y;
     }
 
-    public void paint(Graphics g) {
+    void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(c);
         g2d.setStroke(new BasicStroke(8));
