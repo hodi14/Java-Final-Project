@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 class NewGame extends Board{
-    private JTextField p1_name_t = new JTextField("Player 1");
-    private JTextField p2_name_t = new JTextField("Player 2");
+    private JTextField p1_name_t = new JTextField(Data.getInstance().get_name_1());
+    private JTextField p2_name_t = new JTextField(Data.getInstance().get_name_2());
 
     private JComboBox<Data.tank_color> p1_color_c = new JComboBox<>(Data.tank_color.values());
     private JComboBox<Data.tank_color> p2_color_c = new JComboBox<>(Data.tank_color.values());

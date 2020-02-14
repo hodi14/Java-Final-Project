@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 class Settings extends Board {
-    private JTextField bullet_pt = new JTextField("5");
-    private JTextField life_t = new JTextField("100");
-    private JTextField bullet_nt = new JTextField("20");
+    private JTextField bullet_pt = new JTextField(Integer.toString(Data.getInstance().get_bullet_p()));
+    private JTextField life_t = new JTextField(Integer.toString(Data.getInstance().starting_life));
+    private JTextField bullet_nt = new JTextField(Integer.toString(Data.getInstance().starting_bullet));
 
     Settings() {
         JLabel logo_img = new JLabel(new ImageIcon("./resource/Images/logo.png"));
@@ -25,19 +25,19 @@ class Settings extends Board {
         board.add(back);
         back.addActionListener(this::back);
 
-        JLabel life = new JLabel("              STARTING LIFE");
+        JLabel life = new JLabel("        STARTING LIFE (<1000)");
         life.setBounds(300, 550, 200, 50);
         life.setBackground(Color.LIGHT_GRAY);
         life.setOpaque(true);
         board.add(life);
 
-        JLabel bullet_p = new JLabel("              BULLET POWER");
+        JLabel bullet_p = new JLabel("        BULLET POWER (<1000)");
         bullet_p.setBounds(300, 650, 200, 50);
         bullet_p.setBackground(Color.LIGHT_GRAY);
         bullet_p.setOpaque(true);
         board.add(bullet_p);
 
-        JLabel bullet_n = new JLabel("              BULLET NUMBER");
+        JLabel bullet_n = new JLabel("        BULLET NUMBER (<1000)");
         bullet_n.setBounds(300, 750, 200, 50);
         bullet_n.setBackground(Color.LIGHT_GRAY);
         bullet_n.setOpaque(true);
@@ -55,9 +55,9 @@ class Settings extends Board {
 
     private void back(ActionEvent e) {
         try {
-            int l = Integer.parseInt(life_t.getText());
-            int bn = Integer.parseInt(bullet_nt.getText());
-            int bp = Integer.parseInt(bullet_pt.getText());
+            int l = Integer.parseInt(life_t.getText())%1000;
+            int bn = Integer.parseInt(bullet_nt.getText())%1000;
+            int bp = Integer.parseInt(bullet_pt.getText())%1000;
             Data.getInstance().set_life(l);
             Data.getInstance().set_bullet_p(bp);
             Data.getInstance().set_bullet_n(bn);

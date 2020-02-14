@@ -161,9 +161,6 @@ class GamePlay extends JFrame {
         this.add(paused_lbl);
 
         Ground.getInstance().loadMap(Data.getInstance().get_map_number());
-
-        if (!paused) { game_time.start(); }
-        else { game_time.stop(); }
     }
 
     public void paint(Graphics g) {
