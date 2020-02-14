@@ -429,7 +429,7 @@ class GamePlay extends JFrame {
         for (Wall w : Data.getInstance().walls) {
             if ((bullet1_x_rand >= w.x - 30 && bullet1_x_rand <= w.x + w.width + 30) && (bullet1_y_rand >= w.y - 30 && bullet2_y_rand <= w.y + w.height + 30))
                 made_random_1 = false;
-            if ((bullet2_x_rand >= w.x - 30 && bullet2_x_rand <= w.x + w.width + 30) && (bullet2_y_rand >= w.y - 30 && bullet2_y_rand <= w.y + w.height + 30) && bullet1_x_rand != bullet2_x_rand && bullet1_y_rand != bullet2_y_rand)
+            if ((bullet2_x_rand >= w.x - 30 && bullet2_x_rand <= w.x + w.width + 30) && (bullet2_y_rand >= w.y - 30 && bullet2_y_rand <= w.y + w.height + 30) || (bullet1_x_rand != bullet2_x_rand && bullet1_y_rand != bullet2_y_rand))
                 made_random_2 = false;
             if(!(made_random_1) && !(made_random_2)) {
                 break;
