@@ -255,7 +255,6 @@ class GamePlay extends JFrame {
 
         for (Bullet b: bullets) {
 
-
             if (b.hit_tank(t1) && b.c == t2.c && b.on_map && !t1.has_shield) {
                 Data.getInstance().p1_got_shot();
                 b.on_map = false;
